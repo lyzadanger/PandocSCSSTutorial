@@ -21,7 +21,7 @@ It is likely that this section pertains to AJ only. I think the rest of us have 
 1. Go to [Github](https://github.com/signup/free "Free account signup") and create an account if you do not already have one. You're aiming for the free, open-source version. This link should do it for yah.
 2. Github hosts git repositories. That is where the `origin` remote of this repository (you don't actually *have* this repository yet; panic not) is and the `origin` remote of your forked version of this repository will be. If that terminology seems baffling, try to ignore it; I'm being pedantically correct. *Github hosts the repositories* is a simpler, if not quite as accurate, statement.
     So you have a GitHub account, but now you need to configure `git`—the version control system—itself on your Mac.
-3. Start on the [GitHub "Set Up Git" page](http://help.github.com/mac-set-up-git/), "Set up Git"). Do not be dismayed by the length of the page, nor that it has a lot to say about SSH keys. SSH keys are confusing and annoying (well, IMHO), but the instructions here are actually spot on and easy to follow.
+3. Start on the [GitHub "Set Up Git" page](http://help.github.com/mac-set-up-git/, "Set up Git"). Do not be dismayed by the length of the page, nor that it has a lot to say about SSH keys. SSH keys are confusing and annoying (well, IMHO), but the instructions here are actually spot on and easy to follow.
 4. Again, there are several steps here. But their documentation is good. This is the most involved step you'll have to deal with in this tutorial. Come get me if you get stuck.
 
 ### Install SASS (SCSS)
@@ -44,7 +44,7 @@ which came with Lion by default).
 
 ### Get the GitHub GUI client
 
-GitHub has the nicest GUI client for any version control system that I have ever seen in my entire life. I'm not exaggerating. [Go download it](http://mac.github.com/ "GitHub for Mac"). It takes barely any time to download and install. And it's pretty cute.
+GitHub has the nicest GUI client for any version control system that I have ever seen in my entire life. I'm not exaggerating. [Go download it](http://mac.github.com/, "GitHub for Mac"). It takes barely any time to download and install. And it's pretty cute.
 
 ### Fork the repository
 
