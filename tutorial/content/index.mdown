@@ -50,6 +50,13 @@ GitHub has the nicest GUI client for any version control system that I have ever
 
 You'll want your own version of the repository in which this file normally resides. You probably received this file in another way (e.g. email) to get you started. But the rest of the tutorial is in a git repository.
 
+1. Go to the [PandocSCSSTutorial home page on GitHub](https://github.com/lyzadanger/PandocSCSSTutorial).
+1. Find and click the "Fork" button.
+1. You will see some Hardcore Forking Action.
+1. If you are using the GUI, find the "Clone in Mac" button on the resulting page. Click it. Follow the instructions to add the repository to your GitHub client. It will prompt you for a location to save the folder containing the repository. ALL GOOD.
+1. If you use the command line, I bet you can figure out how to clone the resulting git repo to your local machine.
+1. Go find the `tutorial/` directory and view it in a web browser. You should see this page (spooky) *and* you'll be able to get to the rest of the pages of the tutorial!
+
 ## Onward!
 
 Well done, Schmotchkiss. It's time to talk about what we're up to, anyway. Aren't you curious? Let's chat [philosophy and purpose](philosophy.html), shall we?

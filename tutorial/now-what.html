@@ -1,0 +1,59 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    /*<![CDATA[*/
+      
+    /*]]>*/
+  </style>
+  <link rel="stylesheet" href="../styles/tutorial.css">
+  <title>From here to Cloudfour.com: What's the big idea?</title>
+</head>
+<body>
+<nav id="TOC" class="toc">
+<header>
+  <h1>On This Page</h1>
+</header>
+<ul>
+<li><a href="#the-big-picture">The big picture</a></li>
+<li><a href="#its-not-for-everyone">It's not for everyone</a><ul>
+<li><a href="#a-side-note-about-deployment">A side note about deployment</a></li>
+</ul></li>
+<li><a href="#theres-still-a-lot-to-figure-out">There's still a lot to figure out</a></li>
+<li><a href="#the-big-roadblocks">The big roadblocks</a></li>
+</ul>
+</nav>
+<h2 id="the-big-picture"><a href="#TOC">The big picture</a></h2>
+<p>Step back. Here's what we've been doing:</p>
+<ol type="1">
+<li>Writing content first and treating it with love and a future-friendly goal of keeping it flexible, readable and content-only.</li>
+<li>Transforming. We <em>transform</em> the content (in this case from markdown to HTML) to make it appropriate for the consuming client (a web browser).</li>
+<li>Extending and re-using. We're using <strong>SCSS</strong> to make our CSS more modular and manageable. We're adding some (albeit very rudimentary) resuable components to our pages.</li>
+</ol>
+<h2 id="its-not-for-everyone"><a href="#TOC">It's not for everyone</a></h2>
+<p>This is a very simple concept at present. What happens when we need dynamic stuff, like app-like stuff? How do we manage this? How do we work together in a system like this? How does it get deployed?</p>
+<h3 id="a-side-note-about-deployment"><a href="#TOC">A side note about deployment</a></h3>
+<p>One possibility for deployment (not my <em>forte</em>, kids, not my <em>raison d'etre</em>) is using git and git's rather handsome <em>hooks</em>.</p>
+<p>For <a href="http://hf-mw.com">the book web site</a>, for example, I use git's <code>post-receive</code> hook on the web server. Back up, Lyza.</p>
+<p>For the book web site, I added an additional <code>remote</code> to my clone of the site's git repository on my computer. Translation: I told my copy of the repository that there is another place it can push to. When I push the repository to the <code>remote</code> that is the web server (I call that origin <code>hfmw</code>), it pushes all of the repository changes to the live web server (if there are any).</p>
+<p>On the web server, I have a shell script that takes advantage of the <code>post-receive</code> hook. Whenever a given chapter's repository is pushed to the server (OK, so, I have one repository per chapter. But anyway), after the update is done, it fires the <code>post-receive</code> script. In that script, I do some work moving files around on the file system, building downloadable ZIP files and other stuff that is kind of like the <strong>transformation</strong> I am performing on that content.</p>
+<p>Theoretically we could do something similar. We write the content and the reusable components and create the templates. We commit and push to a git repository on GitHub. When we push to the git repository on some live server somewhere, some relevant git hook fires off a script or scripts that runs those pandoc commands and maybe some SASS commands. That way, we're transforming appropriately for the given environment, which in this case (I know, really, all of our cases, but can you see my point?) is a web server.</p>
+<h2 id="theres-still-a-lot-to-figure-out"><a href="#TOC">There's still a lot to figure out</a></h2>
+<ul>
+<li>I don't really know what deployment looks like. I'd really love input from John.</li>
+<li>I don't know how we should handle images for devices. What a crazy world it is on that front.</li>
+<li>I don't know how we want to handle routing or URLs beyond the obvious (naming files and putting them in folders).</li>
+<li>We'll need to get all sophisticated with our main HTML templates to take advantage of stuff. Client-side feature detection maybe. Any bells and whistles we want. Shims for IE and media queries. Stuff like that.</li>
+</ul>
+<h2 id="the-big-roadblocks"><a href="#TOC">The big roadblocks</a></h2>
+<p>Hokay, so you know how it was dead easy to download and install pandoc? How it just happened easily, quietly like Sunday morning? Welllllp, that kind of hides something underneath.</p>
+<p><strong>pandoc is written in Haskell</strong></p>
+<p>This is, like, the hippest language on the planet. People talk about it over cocktails at secret startups in San Francisco. It is likely the subject of tattoos. It's so beautiful and pure you can't look straight at it.</p>
+<p>Basically, no one uses it. At least not yet.</p>
+<p>Fortunately, it is easy to get running on Macs. It's part of the installer you get with pandoc.</p>
+<p>But there isn't a commercial web hosting provider in the world that I know of that supports Haskell. And setting it up is no minor feat. We'd likely need root. We run the risk of bricking a box. If we want to do the transformation operations on the server—where they belong—we'd need John's help, because we gotta get Haskell running somewhere in this stack.</p>
+</nav>
+</body>
+</html>

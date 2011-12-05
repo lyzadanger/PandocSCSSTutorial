@@ -4,4 +4,4 @@
 
 ##### December 5, 2011
 
-Start with the [intro page](tutorial/intro.html)
+Start with the [intro page](tutorial/)
