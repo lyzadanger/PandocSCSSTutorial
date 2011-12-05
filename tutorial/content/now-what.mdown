@@ -45,4 +45,18 @@ Fortunately, it is easy to get running on Macs. It's part of the installer you g
 
 But there isn't a commercial web hosting provider in the world that I know of that supports Haskell. And setting it up is no minor feat. We'd likely need root. We run the risk of bricking a box. If we want to do the transformation operations on the server—where they belong—we'd need John's help, because we gotta get Haskell running somewhere in this stack.
 
+## Cloudfour.com, the book
+
+Wanna try something demonstrative of my point?
+
+1. `cd content`
+2. `pandoc --from markdown --to epub --standalone index.mdown -o index.epub`[^1]
+3. Drag the resulting file (`index.epub`) from your Finder to iTunes.
+4. Assuming you have your various iDevices set up to sync eBooks, you should be able to plug one in and sync...and then
+5. Open iBooks on your target device. You should have a book called Cloud Four. Granted, it's not exactly a thrilling read. **YET**.
+
+See the possibilities?
+
+[^1]: There is a specificity to the ePub generation in pandoc that requires an output file (via `-o`) not just stdout.
+
 

@@ -23,6 +23,7 @@
 </ul></li>
 <li><a href="#theres-still-a-lot-to-figure-out">There's still a lot to figure out</a></li>
 <li><a href="#the-big-roadblocks">The big roadblocks</a></li>
+<li><a href="#cloudfour.com-the-book">Cloudfour.com, the book</a></li>
 </ul>
 </nav>
 <h2 id="the-big-picture"><a href="#TOC">The big picture</a></h2>
@@ -54,6 +55,22 @@
 <p>Basically, no one uses it. At least not yet.</p>
 <p>Fortunately, it is easy to get running on Macs. It's part of the installer you get with pandoc.</p>
 <p>But there isn't a commercial web hosting provider in the world that I know of that supports Haskell. And setting it up is no minor feat. We'd likely need root. We run the risk of bricking a box. If we want to do the transformation operations on the server—where they belong—we'd need John's help, because we gotta get Haskell running somewhere in this stack.</p>
+<h2 id="cloudfour.com-the-book"><a href="#TOC">Cloudfour.com, the book</a></h2>
+<p>Wanna try something demonstrative of my point?</p>
+<ol type="1">
+<li><code>cd content</code></li>
+<li><code>pandoc --from markdown --to epub --standalone index.mdown -o index.epub</code><sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></li>
+<li>Drag the resulting file (<code>index.epub</code>) from your Finder to iTunes.</li>
+<li>Assuming you have your various iDevices set up to sync eBooks, you should be able to plug one in and sync...and then</li>
+<li>Open iBooks on your target device. You should have a book called Cloud Four. Granted, it's not exactly a thrilling read. <strong>YET</strong>.</li>
+</ol>
+<p>See the possibilities?</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>There is a specificity to the ePub generation in pandoc that requires an output file (via <code>-o</code>) not just stdout. <a href="#fnref1" class="footnoteBackLink">↩</a></p></li>
+</ol>
+</div>
 </nav>
 </body>
 </html>
