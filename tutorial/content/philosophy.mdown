@@ -1,0 +1,94 @@
+% From here to Cloudfour.com: What's the big idea?
+
+## The Goal
+
+Refresh Cloudfour.com within a tight timeline, flexing our technical muscles and putting our mouth where our money is and vice-versa.
+
+## The Ingredients
+
+* *[Markdown][markdown]* (with *[Pandoc][pandoc]* extensions)
+* *[SCSS][scss]* (That is, the new, slightly cooler version of *SASS*)
+* *[Pandoc][pandoc]* for transforming our content into HTML5 pages
+* *[HTML5 Boilerplate][html5bp]* for inspiration on web page templating and client-side feature detection
+* *[Git/Github](http://www.github.com)* for version control and possibly for deployment
+
+## Sounds Geeky
+
+It is. But this is not just something I want to do as a pet project. It represents:
+
+1. A rejection of the cumbersome, fragile situation with CMSes, especially pursuant to the pan-device (i.e. "mobile") web. *Especially* when we're talking about a *static, content-centric web site.*
+    1. Why should content be fragmented and removed from humans in databases, when it is not really relational data?
+    2. Why should content be polluted with any more markup than is relevant to the content itself—that is: why are we imposing web-specific (and in most cases, really, desktop-web-specific) information on our content?
+    3. Why are we vastly overcomplicating things, which leads to 
+        i. Us not understanding our own tools,
+        ii. Us not being able to craft content for disparate devices and/or clients,
+        iii. Us building sites that don't behave in the way that our well-honed best practices suggest they should
+        iv. Us authoring content that is forever glued to and imprisoned by its desktop-heavy, CMS overlords
+2. An interest in expanding our knowledge by forcing some new tools at us, even if this is a *one-off project* that dies a quiet death.
+    i. We are hemmed in by our current toolset, prevented from experimenting with any of the cutting-edge technologies to which we've been introduced.
+    ii. This project is very constrained in size, and the unknowns equally constrained.
+    
+3. A collection of thoughts I've built up and tabled, written down for further exploration, during the writing of the book.
+
+### It's Totally Geeky, You're Right
+
+But it doesn't matter. The output of this project is HTML pages. If we hate it, we can find something else. There is no lock-in.
+
+## The Recipe
+
+### Step 1: Content
+
+At the root of this process is content. Here's something to know:
+
+**For this process it doesn't really matter if we write content in HTML or markdown, though I prefer markdown.**
+
+The reason I'm excited about the shiny tool of `pandoc` is that it is, as it claims, the "swiss-army knife" of content adaptation. It can as easily go from HTML to markdown as from markdown to HTML, or HTML to epub (read it on your iPad!), or markdown to JSON, or HTML to LaTeX or textile to PDF or rst (ReStructured Text) to manpage. It's like that. It doesn't care. It stays the fuck out of the way. Write the content in textile. I don't care. More on this in a sec.
+
+The overarching goal I am pressing for is:
+
+**CONTENT FIRST**
+
+I mean *really* first. I mean freed of its shackles. I mean portable and standalone. I mean actually separating content from presentation, something we all have been giving lip service to for a lot of years.
+
+*Why do I prefer markdown?*
+
+#### Markdown is bigger than Markdown ####
+
+First, I wish there were a more generic term for *markdown*. For one thing, there are actually several flavors of markdown, including MultiMarkdown, which I used for [the book's website](http://hf-mw.com) (you can see the source MultiMarkdown in [the repo][HFMWSite]). There's also a fair amount of confusion about the difference between markdown the syntax and markdown the tool-that-does-the-transformation (e.g MultiMarkdown—it's a library written in C, if you care).
+
+When I say "I prefer markdown," what I mean is not markdown-as-cool-specific-technology but the philosophy that markdown espouses (and has been emphasized in its most nice form, IMHO, by the pandoc approach). Markdown is human-readable. Not just kind of (a la XML or HTML) but really not uncomfortable to scan. But it is *structured*, enough that there is an explicit outline to documents and they can easily be shuttled into and out of other formats. It is also stupidly simple; it takes about five or ten minutes to get your head around. You can find syntax info on [The Daring Fireball](http://daringfireball.net/projects/markdown/syntax "Markdown Syntax documentation"). 
+
+#### Pandoc = markdown++ ####
+
+Pandoc has "extensions," which add things like:
+
+* Syntax highlighting for something around 60 programming languages (when one converts markdown to HTML)
+* Table support
+* More image attribute support
+* Better lists and nested lists
+
+But, true to the philosophy, documents written in the pandoc-extended flavor of markdown (like this one) still look fine[^1] in other markdown viewers and are still human-readable. 
+
+Documents represented in a structure like markdown are portable; they feel **future-friendly**.
+
+So, I will continue to use the term `markdown` for purposes of this project, but I wish there were a better word that encompassed the concept.
+
+#### What's your obsession with pandoc? ####
+
+I've already mentioned a few things. But pandoc is this strangely-quiet, total sleeper of a project. It has a sort of dazzling array of features that, so far, all appear to work as advertised. The project is actually led by [John McFarlane](http:/johnmacfarlane.net/ "John McFarlane's site"), a philosophy professor at Berkeley. Yet somehow it doesn't totally wallow in over-academia.
+
+It doesn't espouse any document format. It merely serves as a Babel fish, something to help free content from any bounds. I think at its core it is trying to solve the same deep question as I am: *What is content? At what point is content represented in the minimal way it needs to be to be structurally meaningful?*
+
+*This is all very abstract*
+
+## Onward! ##
+
+You're right. Let's do something. Let's *build* something. Let's [make some content](build-content.html).
+
+[html5bp]: http://html5boilerplate.com/
+[hfmwSITE]: https://github.com/lyzadanger/HFMWSite
+[markdown]: http://daringfireball.net/projects/markdown/
+[pandoc]: http://johnmacfarlane.net/pandoc
+[scss]: http://sass-lang.com/ "SASS 3 (SCSS)"
+
+[^1]: Well, almost. The human-readable part is definitely true. The markdown viewer part is a bit dicey on a couple of elements. As I'm on the pandoc mailing list, I plan to raise a few flags on these, especially the code-block-delineation, which is an ugly thing like `~~~~{.php}` and nested lists; while Pandoc's lists and nested lists are far more powerful than markdown's (and quite human-readable), the way they look in some markdown viewers is not so good.

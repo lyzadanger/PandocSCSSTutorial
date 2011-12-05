@@ -1,0 +1,529 @@
+% From here to Cloudfour.com: One Idea
+
+## The Goal
+
+Refresh Cloudfour.com within a tight timeline, flexing our technical muscles and putting our mouth where our money is and vice-versa.
+
+## The Ingredients
+
+* *[Markdown][markdown]* (with *[Pandoc][pandoc]* extensions)
+* *[SCSS][scss]* (That is, the new, slightly cooler version of *SASS*)
+* *[Pandoc][pandoc]* for transforming our content into HTML5 pages
+* *[HTML5 Boilerplate][html5bp]* for inspiration on web page templating and client-side feature detection
+* *[Git/Github](http://www.github.com)* for version control and possibly for deployment
+
+## Sounds Geeky
+
+It is. But this is not just something I want to do as a pet project. It represents:
+
+1. A rejection of the cumbersome, fragile situation with CMSes, especially pursuant to the pan-device (i.e. "mobile") web. *Especially* when we're talking about a *static, content-centric web site.*
+    1. Why should content be fragmented and removed from humans in databases, when it is not really relational data?
+    2. Why should content be polluted with any more markup than is relevant to the content itself—that is: why are we imposing web-specific (and in most cases, really, desktop-web-specific) information on our content?
+    3. Why are we vastly overcomplicating things, which leads to 
+        i. Us not understanding our own tools,
+        ii. Us not being able to craft content for disparate devices and/or clients,
+        iii. Us building sites that don't behave in the way that our well-honed best practices suggest they should
+        iv. Us authoring content that is forever glued to and imprisoned by its desktop-heavy, CMS overlords
+2. An interest in expanding our knowledge by forcing some new tools at us, even if this is a *one-off project* that dies a quiet death.
+    i. We are hemmed in by our current toolset, prevented from experimenting with any of the cutting-edge technologies to which we've been introduced.
+    ii. This project is very constrained in size, and the unknowns equally constrained.
+    
+3. A collection of thoughts I've built up and tabled, written down for further exploration, during the writing of the book.
+
+### It's Totally Geeky, You're Right
+
+But it doesn't matter. The output of this project is HTML pages. If we hate it, we can find something else. There is no lock-in.
+
+## The Recipe
+
+### Step 1: Content
+
+At the root of this process is content. Here's something to know:
+
+**For this process it doesn't really matter if we write content in HTML or markdown, though I prefer markdown.**
+
+The reason I'm excited about the shiny tool of `pandoc` is that it is, as it claims, the "swiss-army knife" of content adaptation. It can as easily go from HTML to markdown as from markdown to HTML, or HTML to epub (read it on your iPad!), or markdown to JSON, or HTML to LaTeX or textile to PDF or rst (ReStructured Text) to manpage. It's like that. It doesn't care. It stays the fuck out of the way. Write the content in textile. I don't care. More on this in a sec.
+
+The overarching goal I am pressing for is:
+
+**CONTENT FIRST**
+
+I mean *really* first. I mean freed of its shackles. I mean portable and standalone. I mean actually separating content from presentation, something we all have been giving lip service to for a lot of years.
+
+*Why do I prefer markdown?*
+
+#### Markdown is bigger than Markdown ####
+
+First, I wish there were a more generic term for *markdown*. For one thing, there are actually several flavors of markdown, including MultiMarkdown, which I used for [the book's website](http://hf-mw.com) (you can see the source MultiMarkdown in [the repo][HFMWSite]). There's also a fair amount of confusion about the difference between markdown the syntax and markdown the tool-that-does-the-transformation (e.g MultiMarkdown—it's a library written in C, if you care).
+
+When I say "I prefer markdown," what I mean is not markdown-as-cool-specific-technology but the philosophy that markdown espouses (and has been emphasized in its most nice form, IMHO, by the pandoc approach). Markdown is human-readable. Not just kind of (a la XML or HTML) but really not uncomfortable to scan. But it is *structured*, enough that there is an explicit outline to documents and they can easily be shuttled into and out of other formats. It is also stupidly simple; it takes about five or ten minutes to get your head around. You can find syntax info on [The Daring Fireball](http://daringfireball.net/projects/markdown/syntax "Markdown Syntax documentation"). 
+
+#### Pandoc = markdown++ ####
+
+Pandoc has "extensions," which add things like:
+
+* Syntax highlighting for something around 60 programming languages (when one converts markdown to HTML)
+* Table support
+* More image attribute support
+* Better lists and nested lists
+
+But, true to the philosophy, documents written in the pandoc-extended flavor of markdown (like this one) still look fine[^1] in other markdown viewers and are still human-readable. 
+
+Documents represented in a structure like markdown are portable; they feel **future-friendly**.
+
+So, I will continue to use the term `markdown` for purposes of this project, but I wish there were a better word that encompassed the concept.
+
+#### What's your obsession with pandoc? ####
+
+I've already mentioned a few things. But pandoc is this strangely-quiet, total sleeper of a project. It has a sort of dazzling array of features that, so far, all appear to work as advertised. The project is actually led by [John McFarlane](http:/johnmacfarlane.net/ "John McFarlane's site"), a philosophy professor at Berkeley. Yet somehow it doesn't totally wallow in over-academia.
+
+It doesn't espouse any document format. It merely serves as a Babel fish, something to help free content from any bounds. I think at its core it is trying to solve the same deep question as I am: *What is content? At what point is content represented in the minimal way it needs to be to be structurally meaningful?*
+
+*This is all very abstract*
+
+#### Our first markdown example ####
+
+OK. Let's look at something real, then. This is a very, very preliminary variant of the content Higgins drew on the white board the other day, representing the content on the site's landing page:
+
+
+
+    % Cloud Four: We make the web mobile
+    
+    # Cloud Four
+    
+    ## We Make the Mobile <-> Web
+    
+    ### [Development](http://www.cloudfour.com/dev "Mobile Web Development")
+    
+    We build the mobile <-> web.
+    
+    ### [Training](http://www.cloudfour.com/training "Mobile Web Training and Education")
+    
+    Mobilize your team.
+    
+    ### [Consulting](http://www.cloudfour.com/strategy "Mobile Web Consulting and Strategy")
+    
+    Strategy for today and tomorrow.
+    
+    #### Read our Book
+    
+    We don't just make the mobile web, we also wrote a book about it. Buy [_Head First Mobile Web_](http://bit.ly/hf-mw "Head First Mobile Web") on Amazon.com.
+    
+    #### Find Us
+    
+    Catch up with us in the real world:
+    
+    * Wed, Jan 18: "Zombie Apocalypse 101": [Jason](http://www.example.com "Jason Grigsby") and [Lyza](http://www.example.com "Lyza Danger Gardner"), WebVisions, NYC
+    * Mon, Jan 23: [Mobile Portland](http://www.mobileportland.com "Mobile Portland") meeting, [Urban Airship](http://www.urbanairship.com "Urban Airship Building")
+    
+    [More Gigs...](http://www.cloudfour.com/events "Cloud Four Happenings")
+
+There are very few things to explain here:
+
+* Lines that begin with any number of `#` characters represent headings. `#` is a top-level heading (think `<h1>`). `##` is a second-level heading (`<h2>`), etc.
+* Links are probably the most complex thing in markdown (you should take that as a relief!). They look like `[thing the link should say](http://link.to.this "Optional title for the link; this goes in the <a> title attribute if used")`
+* You make text emphasized by `*surrounding it with an asterisk* or _with underscores_`. Doubling either of these (e.g. `**` or `__`) will get you the `<strong>` tag in HTML (i.e. is stronger emphasis than just one!).
+* This is an item in an unordered list:
+    `* Wed, Jan 18: "Zombie Apocalypse 101": [Jason](http://www.example.com "Jason Grigsby") and [Lyza](http://www.example.com "Lyza Danger Gardner"), WebVisions, NYC`
+    Ordered lists are as straightforward.
+
+#### But how do we get from that to an HTML page? ####
+
+The first step in pandoc-land is to do something like this in a Terminal window:
+
+`$ pandoc --from markdown --to html index.mdown > index.html`
+
+(I'm being quite verbose; this could also be accomplished with `$ pandoc index.mdown > index.html` as markdown to HTML is the default)
+
+I'm telling pandoc to convert `index.mdown` *from* markdown *to* `HTML` and to put (`>`) the resulting output into `index.html`.
+
+Here's what that gives us:
+
+~~~~~{.html}
+
+<h1 id="cloud-four">Cloud Four</h1>
+<h2 id="we-make-the-mobile---web">We Make the Mobile &lt;-&gt; Web</h2>
+<h3 id="development"><a href="http://www.cloudfour.com/dev" title="Mobile Web Development">Development</a></h3>
+<p>We build the mobile &lt;-&gt; web.</p>
+<h3 id="training"><a href="http://www.cloudfour.com/training" title="Mobile Web Training and Education">Training</a></h3>
+<p>Mobilize your team.</p>
+<h3 id="consulting"><a href="http://www.cloudfour.com/strategy" title="Mobile Web Consulting and Strategy">Consulting</a></h3>
+<p>Strategy for today and tomorrow.</p>
+<h4 id="read-our-book">Read our Book</h4>
+<p>We don't just make the mobile web, we also wrote a book about it. Buy <a href="http://bit.ly/hf-mw" title="Head First Mobile Web"><em>Head First Mobile Web</em></a> on Amazon.com.</p>
+<h4 id="find-us">Find Us</h4>
+<p>Catch up with us in the real world:</p>
+<ul>
+<li>Wed, Jan 18: &quot;Zombie Apocalypse 101&quot;: <a href="http://www.example.com" title="Jason Grigsby">Jason</a> and <a href="http://www.example.com" title="Lyza Danger Gardner">Lyza</a>, WebVisions, NYC</li>
+<li>Mon, Jan 23: <a href="http://www.mobileportland.com" title="Mobile Portland">Mobile Portland</a> meeting, <a href="http://www.urbanairship.com" title="Urban Airship Building">Urban Airship</a></li>
+</ul>
+<p><a href="http://www.cloudfour.com/events" title="Cloud Four Happenings">More Gigs...</a></p>
+
+~~~~~~
+
+*That's just a fragment*, you say.
+
+True.
+
+But we can take this further.
+
+#### A standalone HTML page ####
+
+As I mentioned, pandoc does a lot of stuff. If I were to run the command:
+
+`$ pandoc --from markdown --to html --standalone index.mdown > index.html`
+
+I'd get:
+
+~~~~~{.html}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>Cloud Four: We make the web mobile</title>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Cloud Four: We make the web mobile</h1>
+</div>
+<h1 id="cloud-four">Cloud Four</h1>
+<h2 id="we-make-the-mobile---web">We Make the Mobile &lt;-&gt; Web</h2>
+<h3 id="development"><a href="http://www.cloudfour.com/dev" title="Mobile Web Development">Development</a></h3>
+<p>We build the mobile &lt;-&gt; web.</p>
+<h3 id="training"><a href="http://www.cloudfour.com/training" title="Mobile Web Training and Education">Training</a></h3>
+<p>Mobilize your team.</p>
+<h3 id="consulting"><a href="http://www.cloudfour.com/strategy" title="Mobile Web Consulting and Strategy">Consulting</a></h3>
+<p>Strategy for today and tomorrow.</p>
+<h4 id="read-our-book">Read our Book</h4>
+<p>We don't just make the mobile web, we also wrote a book about it. Buy <a href="http://bit.ly/hf-mw" title="Head First Mobile Web"><em>Head First Mobile Web</em></a> on Amazon.com.</p>
+<h4 id="find-us">Find Us</h4>
+<p>Catch up with us in the real world:</p>
+<ul>
+<li>Wed, Jan 18: &quot;Zombie Apocalypse 101&quot;: <a href="http://www.example.com" title="Jason Grigsby">Jason</a> and <a href="http://www.example.com" title="Lyza Danger Gardner">Lyza</a>, WebVisions, NYC</li>
+<li>Mon, Jan 23: <a href="http://www.mobileportland.com" title="Mobile Portland">Mobile Portland</a> meeting, <a href="http://www.urbanairship.com" title="Urban Airship Building">Urban Airship</a></li>
+</ul>
+<p><a href="http://www.cloudfour.com/events" title="Cloud Four Happenings">More Gigs...</a></p>
+</body>
+</html>
+
+~~~~~~
+
+The very first line in our markdown source is:
+
+`% Cloud Four: We make the web mobile`
+
+Pandoc sees this as metadata and knows to make a `<title>` out of it (this is not one of its most elegant features, but it works).
+
+*But this is XHTML-Transitional*
+
+Not to fret.
+
+#### Making it HTML5 ####
+
+`$ pandoc --from markdown --to html --standalone --html5 index.mdown > index.html`
+
+~~~~{.html}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <title>Cloud Four: We make the web mobile</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Cloud Four: We make the web mobile</h1>
+</header>
+<h1 id="cloud-four">Cloud Four</h1>
+<h2 id="we-make-the-mobile---web">We Make the Mobile &lt;-&gt; Web</h2>
+<h3 id="development"><a href="http://www.cloudfour.com/dev" title="Mobile Web Development">Development</a></h3>
+<p>We build the mobile &lt;-&gt; web.</p>
+<h3 id="training"><a href="http://www.cloudfour.com/training" title="Mobile Web Training and Education">Training</a></h3>
+<p>Mobilize your team.</p>
+<h3 id="consulting"><a href="http://www.cloudfour.com/strategy" title="Mobile Web Consulting and Strategy">Consulting</a></h3>
+<p>Strategy for today and tomorrow.</p>
+<h4 id="read-our-book">Read our Book</h4>
+<p>We don't just make the mobile web, we also wrote a book about it. Buy <a href="http://bit.ly/hf-mw" title="Head First Mobile Web"><em>Head First Mobile Web</em></a> on Amazon.com.</p>
+<h4 id="find-us">Find Us</h4>
+<p>Catch up with us in the real world:</p>
+<ul>
+<li>Wed, Jan 18: &quot;Zombie Apocalypse 101&quot;: <a href="http://www.example.com" title="Jason Grigsby">Jason</a> and <a href="http://www.example.com" title="Lyza Danger Gardner">Lyza</a>, WebVisions, NYC</li>
+<li>Mon, Jan 23: <a href="http://www.mobileportland.com" title="Mobile Portland">Mobile Portland</a> meeting, <a href="http://www.urbanairship.com" title="Urban Airship Building">Urban Airship</a></li>
+</ul>
+<p><a href="http://www.cloudfour.com/events" title="Cloud Four Happenings">More Gigs...</a></p>
+</body>
+</html>
+
+~~~~
+
+Or, if you're feeling *especially* HTML5-inclined:
+
+`$ pandoc --from markdown --to html --standalone --html5 --section-divs index.mdown > index.html`
+
+This wraps heading levels in HTML5 `<section>` elements, like this:
+
+~~~~{.html}
+
+<section id="read-our-book">
+<h4>Read our Book</h4>
+<p>We don't just make the mobile web, we also wrote a book about it. Buy <a href="http://bit.ly/hf-mw" title="Head First Mobile Web"><em>Head First Mobile Web</em></a> on Amazon.com.</p>
+</section>
+
+~~~~
+
+#### But what about snippets common to multiple pages? ####
+
+So what do we do about headers, footer links, stuff like that?
+
+Well, first we write them in markdown:
+
+~~~~
+
+* [Our Projects](http://www.cloudfour.com/projects "Our Projects")
+* [Our Team](http://www.cloudfour.com/about "About us and our team")
+* [Mobile Portland](http://www.mobileportland.com "Mobile Portland")
+* [Future Friendly](http://futurefriend.ly "Future Friendly")
+
+~~~~
+
+Let's say that we put that content above in a file named `footer.mdown`.
+
+Then we could run:
+
+`$ pandoc -f markdown -t html footer.mdown > footer.html`
+
+and then:
+
+`$ pandoc -f markdown -t html --standalone --html5 --section-divs --include-after-body=footer.html index.mdown > index.html`
+
+And, voila, we've included the (reusable) footer file at the end of the `<body>` of our index.html.
+
+*But, uh, where is the HTML code and template coming from?*
+
+#### Making our own HTML template for pandoc ####
+
+Pandoc ships with a default HTML5 template. But we're probably going to want to make our own, huh? Let's try this:
+
+~~~~{.html}
+
+<!doctype html>
+<!--[if lt IE 7]>  <![endif]-->
+<!--[if IE 7]>  <![endif]-->
+<!--[if IE 8]> <![endif]-->
+<!--[if gt IE 8]><!-->  <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    /*<![CDATA[*/
+      $highlighting-css$
+    /*]]>*/
+  </style>
+  <link rel="stylesheet" href="$css$">
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$</title>
+</head>
+<body>
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+</body>
+</html>
+
+~~~~~
+
+*And let's save it as `page.html`.*
+
+
+In this very basic HTML page template, I have:
+
+* Left some basic placeholder areas in which we can work around various versions of IE (though we haven't yet)
+* Used some of Pandoc's basic variables. They look like this: `$body$`. It drops in its own code-syntax CSS if it's needed (`$highlighting-css$`) and uses the meta-data to inform what the `<title>` tag should contain (don't worry if the conditional syntax there is kind of gibberish; it's not cogent to the main points here). You can also see it looping through anything given as `--include-after-body` arguments.
+* NOT completed it. It needs to display anything that might be defined as `--include-before-body` as well as several other features of pandoc. It's a start, for demonstration purposes.
+* Given it a way to include CSS dynamically using the `$css$` variable.
+
+Now that we have our own HTML5 template, let's run
+
+`$pandoc -f markdown -t html --standalone --html5 --section-divs --template=page.html --include-after-body=footer.html index.mdown > index.html`
+
+Let's read that command together, just to make sure we haven't lost the plot.
+
+We're asking markdown to convert *from* markdown *to* HTML as a standalone HTML page (not just a fragment) with an HTML5 doctype and corresponding syntax using the template `page.html`. We're including `footer.html`, verbatim, at the end of the `<body>` element. And we're outputting the whole thing as index.html.
+
+#### A segue way to talking about CSS #### 
+
+We're getting close now. But if you were to look at the output, you'd see:
+
+    <link rel="stylesheet" href="">
+    
+Uh oh! We don't have any CSS?! We need to tell Pandoc *one last thing*:
+
+    $ pandoc -f markdown -t html --standalone --html5 --section-divs --template=page.html --include-after-body=footer.html --css=styles/styles.css index.mdown > index.html
+
+And now we have a totally reasonable full HTML page:
+
+~~~~~{.html}
+
+<!doctype html>
+<!--[if lt IE 7]>  <![endif]-->
+<!--[if IE 7]>  <![endif]-->
+<!--[if IE 8]> <![endif]-->
+<!--[if gt IE 8]><!-->  <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    /*<![CDATA[*/
+      
+    /*]]>*/
+  </style>
+  <link rel="stylesheet" href="styles/styles.css">
+  <title>Cloud Four: We make the web mobile</title>
+</head>
+<body>
+<section id="cloud-four">
+<h1>Cloud Four</h1>
+<section id="we-make-the-mobile---web">
+<h2>We Make the Mobile &lt;-&gt; Web</h2>
+<section id="development">
+<h3><a href="http://www.cloudfour.com/dev" title="Mobile Web Development">Development</a></h3>
+<p>We build the mobile &lt;-&gt; web.</p>
+</section>
+<section id="training">
+<h3><a href="http://www.cloudfour.com/training" title="Mobile Web Training and Education">Training</a></h3>
+<p>Mobilize your team.</p>
+</section>
+<section id="consulting">
+<h3><a href="http://www.cloudfour.com/strategy" title="Mobile Web Consulting and Strategy">Consulting</a></h3>
+<p>Strategy for today and tomorrow.</p>
+<section id="read-our-book">
+<h4>Read our Book</h4>
+<p>We don't just make the mobile web, we also wrote a book about it. Buy <a href="http://bit.ly/hf-mw" title="Head First Mobile Web"><em>Head First Mobile Web</em></a> on Amazon.com.</p>
+</section>
+<section id="find-us">
+<h4>Find Us</h4>
+<p>Catch up with us in the real world:</p>
+<ul>
+<li>Wed, Jan 18: &quot;Zombie Apocalypse 101&quot;: <a href="http://www.example.com" title="Jason Grigsby">Jason</a> and <a href="http://www.example.com" title="Lyza Danger Gardner">Lyza</a>, WebVisions, NYC</li>
+<li>Mon, Jan 23: <a href="http://www.mobileportland.com" title="Mobile Portland">Mobile Portland</a> meeting, <a href="http://www.urbanairship.com" title="Urban Airship Building">Urban Airship</a></li>
+</ul>
+<p><a href="http://www.cloudfour.com/events" title="Cloud Four Happenings">More Gigs...</a></p>
+</section>
+</section>
+</section>
+</section>
+<nav>
+  <ul>
+  <li><a href="http://www.cloudfour.com/projects" title="Our Projects">Our Projects</a></li>
+  <li><a href="http://www.cloudfour.com/about" title="About us and our team">Our Team</a></li>
+  <li><a href="http://www.mobileportland.com" title="Mobile Portland">Mobile Portland</a></li>
+  <li><a href="http://futurefriend.ly" title="Future Friendly">Future Friendly</a></li>
+  </ul>
+</nav>
+</body>
+</html>
+
+~~~~~
+
+### Step 2: CSS
+
+#### Sass and SCSS ####
+
+SCSS is cool. It stands for *Sassy CSS* and is the latest version of Sass.
+
+I think showing you an example is probably the quickest way to show what it does. Let's say we dumped the following into a file called `styles.scss`:
+
+~~~~~{.css}
+
+$cloudfour_blue: #709ad0;
+$accent_green: #c4d82d;
+$accent_brown: #78562f;
+$dark_base: #526873;
+$standard_radius: 10px;
+
+body {
+  font-family: helvetica;
+  font-size: 95%;
+  line-height: 1.2em;
+  color: darken($dark_base, 20%);
+  @media screen and (min-width: 600px) {
+    background-color: lighten($cloudfour_blue, 35%);
+  }
+}
+
+h1, h2, h3 {
+  color: $cloudfour_blue;
+}
+
+h4 {
+  color: darken($accent_green, 15%);
+}
+
+section, article, header {
+  display: block;
+  a {
+    color: $cloudfour_blue;
+  }
+}
+
+~~~~~
+
+Let's talk about this for a bit. 
+
+1. There are *variables*. I grabbed a few representative hex values from our current site and gave them descriptive names.
+2. There is *nesting*. Look at the location of that `@media` rule! This is an imaginary stupid situation—changing the background color depending on screen width—but think about stuff like this. You're writing CSS for a given selector and you realize you want to do something with a media query for the way that selector behaves. With SCSS you can stick the media query right where you are and it will take care of writing the appropriate output CSS. Also check out the way I've made `<a>` elements inside `<section>, <article> and <header>` elements (arbitrary, admittedly) `$cloudfour_blue` without having to write the full selector `section.a` (OK, terrible example, but you get the idea. You can group your stuff logically).
+3. There are *functions*. Notice how I've used `$cloudfour_blue` but I've made it lighter, for the background on wider screens: `background-color: lighten($cloudfour_blue, 35%);`. There are several other examples in there.
+4. I haven't even shown you `mixins` (*chunks* of CSS you can reuse) or `selector inheritance` (major shorthand for saying "I want to start with what's defined in this other selector and then add more stuff to it).
+
+#### What that SCSS turns into ####
+
+I'm going to run that through the magic SASS machine (OK, it's really a *Ruby gem* that can be installed with one line in your Terminal on your Mac, really, I swear). My command looks like:
+
+`$ sass styles.scss styles.css`
+
+Out comes:
+
+~~~~~{.css}
+
+body {
+  font-family: helvetica;
+  font-size: 95%;
+  line-height: 1.2em;
+  color: #283237; }
+  @media screen and (min-width: 600px) {
+    body {
+      background-color: #f6f9fc; } }
+
+h1, h2, h3 {
+  color: #709ad0; }
+
+h4 {
+  color: #8d9c1d; }
+
+section, article, header {
+  display: block; }
+  section a, article a, header a {
+    color: #709ad0; }
+    
+~~~~~
+
+See how SASS expands and writes CSS our browsers will understand?!
+
+Go [learn more][scss]!!
+
+
+[html5bp]: http://html5boilerplate.com/
+[hfmwSITE]: https://github.com/lyzadanger/HFMWSite
+[markdown]: http://daringfireball.net/projects/markdown/
+[pandoc]: http://johnmacfarlane.net/pandoc
+[scss]: http://sass-lang.com/ "SASS 3 (SCSS)"
+
+[^1]: Well, almost. The human-readable part is definitely true. The markdown viewer part is a bit dicey on a couple of elements. As I'm on the pandoc mailing list, I plan to raise a few flags on these, especially the code-block-delineation, which is an ugly thing like `~~~~{.php}` and nested lists; while Pandoc's lists and nested lists are far more powerful than markdown's (and quite human-readable), the way they look in some markdown viewers is not so good.

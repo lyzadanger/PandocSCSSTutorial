@@ -1,0 +1,362 @@
+% From here to Cloudfour.com: Let's build stuff
+
+# Ready to build? Good.
+
+## Start with content
+
+### Super-crazy Basic Content: Markdown
+
+Inside of the `content` directory of this repository, you will find `index.mdown`.
+
+This is content in its most basic form. I took a mental snapshot of Higgins' white board drawing from Friday and wrote it down, hierarchically, as I see it in my head.
+
+*NB: This is for demonstration purposes only and does not imply that I think that this should represent the content of the landing page of our new web site.*
+
+For illustrative purposes, I am going to put the contents of the file here, also:
+
+    % Cloud Four: We make the web mobile
+    
+    # Cloud Four
+    
+    ## We Make the Mobile <-> Web
+    
+    ### [Development](http://www.cloudfour.com/dev "Mobile Web Development")
+    
+    We build the mobile <-> web.
+    
+    ### [Training](http://www.cloudfour.com/training "Mobile Web Training and Education")
+    
+    Mobilize your team.
+    
+    ### [Consulting](http://www.cloudfour.com/strategy "Mobile Web Consulting and Strategy")
+    
+    Strategy for today and tomorrow.
+    
+    #### Read our Book
+    
+    We don't just make the mobile web, we also wrote a book about it. Buy [_Head First Mobile Web_](http://bit.ly/hf-mw "Head First Mobile Web") on Amazon.com.
+    
+    #### Find Us
+    
+    Catch up with us in the real world:
+    
+    * Wed, Jan 18: "Zombie Apocalypse 101": [Jason](http://www.example.com/jason "Jason Grigsby") and [Lyza](http://www.example.com/lyza "Lyza Danger Gardner"), WebVisions, NYC
+    * Mon, Jan 23: [Mobile Portland](http://www.mobileportland.com "Mobile Portland") meeting, [Urban Airship](http://www.urbanairship.com "Urban Airship Building")
+    
+    [More Gigs...](http://www.cloudfour.com/events "Cloud Four Happenings")
+
+That's basic markdown. This is about as ugly as it gets: this page has a lot of links (IMHO, markdown's ugliest syntax bit).
+
+### A whirlwind tour through very basic markdown
+
+#### Sorry, Trick Question of a Sort
+
+    % Cloud Four: We make the web mobile
+    
+That first line is actually for **Pandoc**. I'll show you what it does later. It's not my favorite pandoc-y dialect thing, as I think it's a bit ugly. But it is parse-able.
+
+#### Headings
+
+    # Cloud Four
+
+That's a top-level heading (think `<h1>` if you must!).
+
+    ## We Make the Mobile <-> Web
+    
+    #### Read our Book
+    
+Second and fourth-level headings...get the drift?
+
+#### Links
+
+    ### [Consulting](http://www.cloudfour.com/strategy "Mobile Web Consulting and Strategy")
+
+A third-level header. Then a link. The link will *read* `Consulting` and will link to `http://www.cloudfour.com/strategy`. Link syntax is, for me, the thing I have trouble remembering the most about markdown syntax. In the most basic of senses:
+
+    [Thing the link says](http://where.it.links.to.com "Title of the link")
+
+The title will end up in the `title` attribute of the `<a>` element once we transform to HTML. But, to be pure, this isn't the `title` attribute of an `<a>` element, it's more primal: it's the title of the link. Grin. Yes, I'm being difficult here.
+
+The title is optional.
+
+##### Links, The Sequel
+
+There is another link syntax you can use if you prefer the look of it. Let's edit the `index.mdown` file.
+
+**Do This**: Convert the links to Jason and Lyza (yes, I realize these are fake links) to reference-style links in `index.mdown`. 
+Here is the formula:
+
+    [Thing the Link Says][Any keyword or identifier]
+
+For example:
+
+    [Voodoo Doughnuts and their anatomical creations][Voodoo]
+
+Then, later in the document (the bottom is usually a good candidate):
+
+    [Voodoo]:'http://voodoodoughnut.com/'
+
+So, you're creating a sort of footnote to the link itself. This can be easier to parse when you're reading markdown directly. It's a matter of authorial preference.
+
+Change the links to Jason and Lyza to this variant. After you're don, you can check the solution[^1].
+
+#### More Greatest Hits
+
+To use text or code *verbatim* inline, use tick marks: \`like this\` is rendered `like this`.
+
+Entire code blocks (trust me, tremendously useful) can be handled in one of two ways:
+
+1. Simple: indent the chunk by at least four spaces. Yeah. That's it.
+2. Use pandoc's built-in syntax highlighting by starting and ending your code block with four (or more) tildes.
+    a. `~~~~`, then a blank line, then your code chunk, then a blank line, then `~~~~`.
+    b. Even better: open your code chunk with `~~~~~{.css}` (this example would format as CSS). This will do language-specific highlighing. Curious as to whether pandoc supports your language? Try running `pandoc --version`. My hunch is that it does.
+    c. p.s. You don't need to put the language extension/name in your closing tildes.
+    
+###### Output of pandoc --version ######
+
+    Compiled with syntax highlighting support for:
+    Actionscript, Ada, Alert, Alert_indent, Ansys, Apache, Asn1, Asp, Awk, Bash,
+    Bibtex, Boo, C, Changelog, Cisco, Cmake, Coffeescript, Coldfusion, Commonlisp,
+    Cpp, Cs, Css, Cue, D, Desktop, Diff, Djangotemplate, Doxygen, Doxygenlua, Dtd,
+    Eiffel, Email, Erlang, Fortran, Fsharp, Fstab, Gap, Gdb, Gettext, Gnuassembler,
+    Go, Haskell, Haxe, Html, Idl, Ilerpg, Ini, Java, Javadoc, Javascript, Json, Jsp,
+    Latex, Lex, LiterateHaskell, Lua, M3u, Makefile, Mandoc, Matlab, Maxima,
+    Mediawiki, Metafont, Mips, Modula2, Modula3, Monobasic, Nasm, Noweb, Objectivec,
+    Objectivecpp, Ocaml, Octave, Pango, Pascal, Perl, Php, Pike, Postscript, Prolog,
+    Python, R, Relaxngcompact, Rhtml, Ruby, Scala, Scheme, Sci, Sed, Sgml, Sql,
+    SqlMysql, SqlPostgresql, Tcl, Texinfo, Verilog, Vhdl, Winehq, Wml, Xharbour,
+    Xml, Xorg, Xslt, Xul, Yacc, Yaml
+
+###### It's like infinite reflections ######
+
+I am now going to show you the pandoc-extended markdown source for this entire section by indenting it four spaces.
+
+    #### More Greatest Hits
+    
+    To use text or code *verbatim* inline, use tick marks: \`like this\` is rendered `like this`.
+    
+    Entire code blocks (trust me, tremendously useful) can be handled in one of two ways:
+    
+    1. Simple: indent the chunk by at least four spaces. Yeah. That's it.
+    2. Use pandoc's built-in syntax highlighting by starting and ending your code block with four (or more) tildes.
+        a. `~~~~`, then a blank line, then your code chunk, then a blank line, then `~~~~`.
+        b. Even better: open your code chunk with `~~~~~{.css}` (this example would format as CSS). This will do language-specific highlighing. Curious as to whether pandoc supports your language? Try running `pandoc --version`. My hunch is that it does.
+        c. p.s. You don't need to put the language extension/name in your closing tildes.
+        
+    ###### Output of pandoc --version ######
+    
+        Compiled with syntax highlighting support for:
+        Actionscript, Ada, Alert, Alert_indent, Ansys, Apache, Asn1, Asp, Awk, Bash,
+        Bibtex, Boo, C, Changelog, Cisco, Cmake, Coffeescript, Coldfusion, Commonlisp,
+        Cpp, Cs, Css, Cue, D, Desktop, Diff, Djangotemplate, Doxygen, Doxygenlua, Dtd,
+        Eiffel, Email, Erlang, Fortran, Fsharp, Fstab, Gap, Gdb, Gettext, Gnuassembler,
+        Go, Haskell, Haxe, Html, Idl, Ilerpg, Ini, Java, Javadoc, Javascript, Json, Jsp,
+        Latex, Lex, LiterateHaskell, Lua, M3u, Makefile, Mandoc, Matlab, Maxima,
+        Mediawiki, Metafont, Mips, Modula2, Modula3, Monobasic, Nasm, Noweb, Objectivec,
+        Objectivecpp, Ocaml, Octave, Pango, Pascal, Perl, Php, Pike, Postscript, Prolog,
+        Python, R, Relaxngcompact, Rhtml, Ruby, Scala, Scheme, Sci, Sed, Sgml, Sql,
+        SqlMysql, SqlPostgresql, Tcl, Texinfo, Verilog, Vhdl, Winehq, Wml, Xharbour,
+        Xml, Xorg, Xslt, Xul, Yacc, Yaml
+    
+    ###### It's like infinite reflections ######
+    
+    I am now going to show you the pandoc-extended markdown source for this entire section by indenting it four spaces.
+
+Note my use of pandoc-extended nested lists. Pandoc lets one use different kind of textual list markers[^2].
+
+###### Hey, look, a bit of CSS ######
+
+Using the `~~~~{.css}` type of code delineation...
+
+~~~~{.css}
+
+    section { margin-left: 0.5em; }
+    a { color: #3666a4; }
+
+~~~~
+
+And the source of that:
+
+    ~~~~{.css}
+    
+        section { margin-left: 0.5em; }
+        a { color: #3666a4; }
+    
+    ~~~~
+
+*Note: The blank lines make this play better with non-pandoc markdown viewers.*
+
+### A dash of magic: Transformation (to HTML)
+
+OK, Smotchkkiss. You've got some markdown. How are you going to make that play Internet? It's a bit of a different tune, I grant you.
+
+The pseudo-front-page content is kind of chilling on the couch in its birthday suit. Let's put it in web clothing so it can get turned loose in the playground with the other kids without freaking the more uptight mothers out.
+
+Cue pandoc. We're going to take our **core content** and **transform it** so that it is appropriate for **web browsers.**
+
+1. Open a Terminal window.
+2. cd to the `content` directory of this repo on your computer.
+3. Run the following command:
+    `$ pandoc --from markdown --to html index.mdown > ../index.html`
+
+If you `cd` up one level and run `ls`, you should see an `index.html` file.
+
+Let's look at that command again.
+
+    pandoc --from markdown --to html index.mdown > ../index.html
+
+We're asking `pandoc` to convert *from* markdown (the input format) *to* HTML (the output format). Where's the content we want to transform? In `index.mdown`. We then direct the output (this is a standard *NIX thing) to the file `../index.html` by using the redirection operator `>`.
+
+(Aside for smarty pants people: You can accomplish the same with `pandoc index.mdown > ../index.html` as markdown is the default input format and HTML the default output.)
+
+### Fragmenting the Hell out of it
+
+Open that `index.html` in your favorite text editor (ahem, note, it is one directory higher than the `content` directory (i.e. the top level directory of the repository)). You should be looking at a chunk of HTML markup. It starts like this:
+
+~~~~{.html}
+
+    <h1 id="cloud-four">Cloud Four</h1>
+    <h2 id="we-make-the-mobile---web">We Make the Mobile &lt;-&gt; Web</h2>
+    <h3 id="development"><a href="http://www.cloudfour.com/dev" title="Mobile Web Development">Development</a></h3>
+    <p>We build the mobile &lt;-&gt; web.</p>
+
+~~~~
+
+...and goes along in that vein for a while. You can see that pandoc creates and applies unique IDs to the various elements and takes care of converting HTML entities for us.
+
+You can also view this in a web browser. Let me rephrase: *view this in a web browser*.
+
+### We can do better than this: Going Standalone
+
+OK, we've made it past the midterm, but now our little project needs to stand on its own. We can't just hurl that index.html out onto the big, bad Internet quite like that. It's HTML, all right, but it's fragmentary. It needs structure or it's likely to get into dope or skateboarding.
+
+One of pandoc's tools is the ability to create `standalone` documents, not just fragments.
+
+1. `cd` back into the `content` directory.
+2. Run this command: `$ pandoc -f markdown -t html --standalone index.mdown > ../index.html`
+
+As we've all spent a bit of time with pandoc now, I figured it'd be OK to start using the shorter, more familiar, more drop-by-any-time-for-a-drink options `-f` and `-t` instead of `--from` and `--to`, respectively.
+
+You'll also note we have asked pandoc to give us `standalone` HTML.
+
+*Now* look at the `index.html` file. *Viva la difference!* We now have a file that starts like this:
+
+~~~~{.html}
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="generator" content="pandoc" />
+      <title>Cloud Four: We make the web mobile</title>
+    </head>
+    <body>
+
+~~~~
+
+...and continues on as such.
+
+#### But wait...it ain't quite right: upping to HTML5
+
+You probably already noticed that the `doctype` for the file is XHTML-transitional. Uhho. We want HTML5! It's so much cooler. Let's one-up our pandoc awesome by doing *two* more cool things now:
+
+1. `cd` to the `content` directory (getting a bit old hat, isn't it?)
+2. Run: `pandoc -f markdown -t html --standalone --html5 --section-divs index.mdown > ../index.html`
+
+Let's read this together:
+
+* Tell pandoc to
+* Convert from markdown to HTML
+* Make it a standalone file, not a fragment
+* Use HTML5
+* Wrap the outline sections of the document—generally delineated by headings—with HTML5 `<section>` elements
+* Use the file `index.mdown` as input
+* Output to `../index.html`
+
+If you look at the updated `index.html` file, you'll see it does appear to be bona-fide HTML5:
+
+~~~~{.html}
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8" />
+      <meta name="generator" content="pandoc" />
+      <title>Cloud Four: We make the web mobile</title>
+      <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+    <header>
+    <h1 class="title">Cloud Four: We make the web mobile</h1>
+
+~~~~
+
+*But wait...it's ugly. I need style! I need my own template! WTF is html5.js? Where'd that come from?* **I am feeling very out of control!!!!**
+
+#### Customizing the template
+
+Now **do this**:
+
+1. `cd` to the `templates` directory. Ignore the existing `tutorial-page.html` file (that's what I used as the template for this, what you are reading, right now!). Create your own file called `page.html`.
+2. Put this in the file and save it:
+
+~~~~{.html}
+
+    <!doctype html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <link rel="stylesheet" href="$css$">
+      <title>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$</title>
+    </head>
+    <body>
+      $body$
+    </body>
+    </html>
+
+~~~~
+
+I'm going to tell you a hint that **pandoc variables look like `$this$`.** The `$body$` variable gets populated with the entirety of our document if we use it in a template and indicate that we want pandoc to use this template.
+
+Try to ignore how ugly the `<title>` stuff looks for now.
+
+OK, let's take this thing for a test flight:
+
+1. `cd` to the `content` directory again.
+2. Run the command: `pandoc --from markdown --to html --standalone --html5 --section-divs --template=../templates/page.html index.mdown > ../index.html`
+
+Look at *that* in a browser and a text editor.
+
+#### Um, CSS please (a wonderful segue way to our next topic)?
+
+Oh, dear, our `<head>` is looking a bit bare. Perhaps it needs a hat. No, actually, it needs CSS:
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <link rel="stylesheet" href="">
+      <title>Cloud Four: We make the web mobile</title>
+    </head>
+
+We have neglected to tell pandoc what CSS we wish to use. How interesting, as I wanted to tell you all about **SASS and SCSS**.
+
+## Congratulations
+
+You have now built markdown and transformed it to real HTML5 in a standalone document. Now it's time to [add some style](style-content.html).
+
+[^1]: Solution to link syntax conversion:
+
+    `* Wed, Jan 18: "Zombie Apocalypse 101": [Jason][jason]) and [Lyza][lyza], WebVisions, NYC`
+
+    and at the bottom of the file:
+
+    `[Jason]:http://www.example.com/jason`  
+    `[Lyza]:http://www.example.com/lyza`
+     
+    It's OK, of course, if you came up with different identifiers or used a slightly different title value (or none at all, if you're like that).
+
+[^2]: [More on pandoc-extended lists](http://johnmacfarlane.net/pandoc/README.html#lists)

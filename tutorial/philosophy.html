@@ -1,0 +1,106 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    /*<![CDATA[*/
+      
+    /*]]>*/
+  </style>
+  <link rel="stylesheet" href="../styles/tutorial.css">
+  <title>From here to Cloudfour.com: What's the big idea?</title>
+</head>
+<body>
+<nav id="TOC" class="toc">
+<header>
+  <h1>On This Page</h1>
+</header>
+<ul>
+<li><a href="#the-goal">The Goal</a></li>
+<li><a href="#the-ingredients">The Ingredients</a></li>
+<li><a href="#sounds-geeky">Sounds Geeky</a><ul>
+<li><a href="#its-totally-geeky-youre-right">It's Totally Geeky, You're Right</a></li>
+</ul></li>
+<li><a href="#the-recipe">The Recipe</a><ul>
+<li><a href="#step-1-content">Step 1: Content</a><ul>
+<li><a href="#markdown-is-bigger-than-markdown">Markdown is bigger than Markdown</a></li>
+<li><a href="#pandoc-markdown">Pandoc = markdown++</a></li>
+<li><a href="#whats-your-obsession-with-pandoc">What's your obsession with pandoc?</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#onward">Onward!</a></li>
+</ul>
+</nav>
+<h2 id="the-goal"><a href="#TOC">The Goal</a></h2>
+<p>Refresh Cloudfour.com within a tight timeline, flexing our technical muscles and putting our mouth where our money is and vice-versa.</p>
+<h2 id="the-ingredients"><a href="#TOC">The Ingredients</a></h2>
+<ul>
+<li><em><a href="http://daringfireball.net/projects/markdown/">Markdown</a></em> (with <em><a href="http://johnmacfarlane.net/pandoc">Pandoc</a></em> extensions)</li>
+<li><em><a href="http://sass-lang.com/" title="SASS 3 (SCSS)">SCSS</a></em> (That is, the new, slightly cooler version of <em>SASS</em>)</li>
+<li><em><a href="http://johnmacfarlane.net/pandoc">Pandoc</a></em> for transforming our content into HTML5 pages</li>
+<li><em><a href="http://html5boilerplate.com/">HTML5 Boilerplate</a></em> for inspiration on web page templating and client-side feature detection</li>
+<li><em><a href="http://www.github.com">Git/Github</a></em> for version control and possibly for deployment</li>
+</ul>
+<h2 id="sounds-geeky"><a href="#TOC">Sounds Geeky</a></h2>
+<p>It is. But this is not just something I want to do as a pet project. It represents:</p>
+<ol type="1">
+<li>A rejection of the cumbersome, fragile situation with CMSes, especially pursuant to the pan-device (i.e. &quot;mobile&quot;) web. <em>Especially</em> when we're talking about a <em>static, content-centric web site.</em>
+<ol type="1">
+<li>Why should content be fragmented and removed from humans in databases, when it is not really relational data?</li>
+<li>Why should content be polluted with any more markup than is relevant to the content itself—that is: why are we imposing web-specific (and in most cases, really, desktop-web-specific) information on our content?</li>
+<li>Why are we vastly overcomplicating things, which leads to
+<ol type="i">
+<li>Us not understanding our own tools,</li>
+<li>Us not being able to craft content for disparate devices and/or clients,</li>
+<li>Us building sites that don't behave in the way that our well-honed best practices suggest they should</li>
+<li>Us authoring content that is forever glued to and imprisoned by its desktop-heavy, CMS overlords</li>
+</ol></li>
+</ol></li>
+<li>An interest in expanding our knowledge by forcing some new tools at us, even if this is a <em>one-off project</em> that dies a quiet death.
+<ol type="i">
+<li>We are hemmed in by our current toolset, prevented from experimenting with any of the cutting-edge technologies to which we've been introduced.</li>
+<li>This project is very constrained in size, and the unknowns equally constrained.</li>
+</ol></li>
+<li>A collection of thoughts I've built up and tabled, written down for further exploration, during the writing of the book.</li>
+</ol>
+<h3 id="its-totally-geeky-youre-right"><a href="#TOC">It's Totally Geeky, You're Right</a></h3>
+<p>But it doesn't matter. The output of this project is HTML pages. If we hate it, we can find something else. There is no lock-in.</p>
+<h2 id="the-recipe"><a href="#TOC">The Recipe</a></h2>
+<h3 id="step-1-content"><a href="#TOC">Step 1: Content</a></h3>
+<p>At the root of this process is content. Here's something to know:</p>
+<p><strong>For this process it doesn't really matter if we write content in HTML or markdown, though I prefer markdown.</strong></p>
+<p>The reason I'm excited about the shiny tool of <code>pandoc</code> is that it is, as it claims, the &quot;swiss-army knife&quot; of content adaptation. It can as easily go from HTML to markdown as from markdown to HTML, or HTML to epub (read it on your iPad!), or markdown to JSON, or HTML to LaTeX or textile to PDF or rst (ReStructured Text) to manpage. It's like that. It doesn't care. It stays the fuck out of the way. Write the content in textile. I don't care. More on this in a sec.</p>
+<p>The overarching goal I am pressing for is:</p>
+<p><strong>CONTENT FIRST</strong></p>
+<p>I mean <em>really</em> first. I mean freed of its shackles. I mean portable and standalone. I mean actually separating content from presentation, something we all have been giving lip service to for a lot of years.</p>
+<p><em>Why do I prefer markdown?</em></p>
+<h4 id="markdown-is-bigger-than-markdown"><a href="#TOC">Markdown is bigger than Markdown</a></h4>
+<p>First, I wish there were a more generic term for <em>markdown</em>. For one thing, there are actually several flavors of markdown, including MultiMarkdown, which I used for <a href="http://hf-mw.com">the book's website</a> (you can see the source MultiMarkdown in <a href="https://github.com/lyzadanger/HFMWSite">the repo</a>). There's also a fair amount of confusion about the difference between markdown the syntax and markdown the tool-that-does-the-transformation (e.g MultiMarkdown—it's a library written in C, if you care).</p>
+<p>When I say &quot;I prefer markdown,&quot; what I mean is not markdown-as-cool-specific-technology but the philosophy that markdown espouses (and has been emphasized in its most nice form, IMHO, by the pandoc approach). Markdown is human-readable. Not just kind of (a la XML or HTML) but really not uncomfortable to scan. But it is <em>structured</em>, enough that there is an explicit outline to documents and they can easily be shuttled into and out of other formats. It is also stupidly simple; it takes about five or ten minutes to get your head around. You can find syntax info on <a href="http://daringfireball.net/projects/markdown/syntax" title="Markdown Syntax documentation">The Daring Fireball</a>.</p>
+<h4 id="pandoc-markdown"><a href="#TOC">Pandoc = markdown++</a></h4>
+<p>Pandoc has &quot;extensions,&quot; which add things like:</p>
+<ul>
+<li>Syntax highlighting for something around 60 programming languages (when one converts markdown to HTML)</li>
+<li>Table support</li>
+<li>More image attribute support</li>
+<li>Better lists and nested lists</li>
+</ul>
+<p>But, true to the philosophy, documents written in the pandoc-extended flavor of markdown (like this one) still look fine<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> in other markdown viewers and are still human-readable.</p>
+<p>Documents represented in a structure like markdown are portable; they feel <strong>future-friendly</strong>.</p>
+<p>So, I will continue to use the term <code>markdown</code> for purposes of this project, but I wish there were a better word that encompassed the concept.</p>
+<h4 id="whats-your-obsession-with-pandoc"><a href="#TOC">What's your obsession with pandoc?</a></h4>
+<p>I've already mentioned a few things. But pandoc is this strangely-quiet, total sleeper of a project. It has a sort of dazzling array of features that, so far, all appear to work as advertised. The project is actually led by <a href="http:/johnmacfarlane.net/" title="John McFarlane's site">John McFarlane</a>, a philosophy professor at Berkeley. Yet somehow it doesn't totally wallow in over-academia.</p>
+<p>It doesn't espouse any document format. It merely serves as a Babel fish, something to help free content from any bounds. I think at its core it is trying to solve the same deep question as I am: <em>What is content? At what point is content represented in the minimal way it needs to be to be structurally meaningful?</em></p>
+<p><em>This is all very abstract</em></p>
+<h2 id="onward"><a href="#TOC">Onward!</a></h2>
+<p>You're right. Let's do something. Let's <em>build</em> something. Let's <a href="build-content.html">make some content</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Well, almost. The human-readable part is definitely true. The markdown viewer part is a bit dicey on a couple of elements. As I'm on the pandoc mailing list, I plan to raise a few flags on these, especially the code-block-delineation, which is an ugly thing like <code>~~~~{.php}</code> and nested lists; while Pandoc's lists and nested lists are far more powerful than markdown's (and quite human-readable), the way they look in some markdown viewers is not so good. <a href="#fnref1" class="footnoteBackLink">↩</a></p></li>
+</ol>
+</div>
+</nav>
+</body>
+</html>

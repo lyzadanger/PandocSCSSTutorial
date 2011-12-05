@@ -1,0 +1,117 @@
+% From here to Cloudfour.com: Let's put stuff together
+
+# Puttin' it together
+
+## Pandoc and CSS, sittin' in a tree
+
+1. `cd` to the `content` directory.
+2. Run this honker:
+    
+    `pandoc --from markdown --to html --standalone --html5 --section-divs --template=../templates/page.html --css=styles/styles.css index.mdown > ../index.html`
+    
+(The only thing different here from our last pandoc command is the `--css` flag).
+
+How do you like them apples (that is, the apples should be viewed in a web browser)?
+
+Resize your window down to smallish to see the poo.
+
+## Sometimes you want to use things more than once
+
+What about things like:
+
+* Footer links?
+* Nav?
+
+*This all seems a bit simplistic, doesn't it?*
+
+This is when we start piling on the layers, either in pandoc (that kind I'll show you) or using our general scripting smarts.
+
+### Reusable elements: how about some footer links?
+
+We're going to create a reusable chunk. These are the steps we'll follow:
+
+1. Create the content of the links. As always, content first!
+2. Create a template HTML file in which we want to render those links.
+3. Update our `page.html` template to display the chunk.
+4. Run a slightly different pandoc command to get the footer chunk in our `index.html` document.
+
+#### Create the links
+
+1. `cd` to the `content` directory.
+2. In the interest of purity, `mkdir common`. That is, create a subdirectory called `common`.
+3. In the `common` directory, create a file called `footer.mdown`.
+4. This is what should go in the file:
+
+~~~~
+
+    * [Our Projects](http://www.cloudfour.com/projects "Our Projects")
+    * [Our Team](http://www.cloudfour.com/about "About us and our team")
+    * [Mobile Portland](http://www.mobileportland.com "Mobile Portland")
+    * [Future Friendly](http://futurefriend.ly "Future Friendly")
+
+~~~~
+
+#### Create the template
+
+Let's be all hip and use HTML5.
+
+1. `cd` to the `templates` directory now.
+2. Create a new file called `footer.html`.
+3. Put this in the file:
+
+~~~~{.html}
+
+    <footer>
+      <nav>
+        $body$
+      </nav>
+    </footer>
+
+~~~~
+
+Spend a moment ruminating about what you think it might do.
+
+#### Update our main page template
+
+OK, a confession. We made our `page.html` file a bit simpler than it really needs to be. We didn't include all of pandoc's default variables. Let's update it. Add this section to the area indicated (right after the `$body` variable):
+
+~~~~{.html}
+
+    </head>
+    <body>
+      $body$
+      $for(include-after)$
+      $include-after$
+      $endfor$
+    </body>
+    </html>
+
+~~~~
+
+#### Update our pandoc command and GO!
+
+That sort of inscrutable bit of pandoc loop means "for each defined section that is declared to be something that should show up *after* the main body content...well, print that out now, ok?"
+
+So, what we need to do to sew this up is:
+
+1. Convert the `footer.mdown` file to HTML using our `footer.html` template.
+2. Update our main whopper of a pandoc command to output our `index.html` file with the new, reusable footer.
+
+Ready?
+
+`cd` to the `content` directory, where your `index.html` file and `common` directory should be.
+
+Now, run this command:
+
+    pandoc --from markdown --to html --html5 --template=../templates/footer.html common/footer.mdown > common/footer.html
+
+That takes our `footer.mdown` content, uses `../templates/footer.html` as a template, and outputs HTML into `common/footer.html`. Now we have a footer we can stick into content!
+    
+And then run this:
+
+    pandoc --from markdown --to html --standalone --html5 --section-divs --template=../templates/page.html --css=styles/styles.css --include-after-body=common/footer.html index.mdown > ../index.html
+    
+We're using `--include-after-body` to stick `common/footer.html` into the resulting HTML file *after* the main body content.
+
+View the result in a web browser! DO IT!!!!!
+    

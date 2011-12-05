@@ -1,0 +1,301 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    /*<![CDATA[*/
+      table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre 
+         { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+      td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; }
+      td.sourceCode { padding-left: 5px; }
+      code.sourceCode span.kw { color: #007020; font-weight: bold; } 
+      code.sourceCode span.dt { color: #902000; }
+      code.sourceCode span.dv { color: #40a070; }
+      code.sourceCode span.bn { color: #40a070; }
+      code.sourceCode span.fl { color: #40a070; }
+      code.sourceCode span.ch { color: #4070a0; }
+      code.sourceCode span.st { color: #4070a0; }
+      code.sourceCode span.co { color: #60a0b0; font-style: italic; }
+      code.sourceCode span.ot { color: #007020; }
+      code.sourceCode span.al { color: red; font-weight: bold; }
+      code.sourceCode span.fu { color: #06287e; }
+      code.sourceCode span.re { }
+      code.sourceCode span.er { color: red; font-weight: bold; }
+    /*]]>*/
+  </style>
+  <link rel="stylesheet" href="../styles/tutorial.css">
+  <title>From here to Cloudfour.com: Let's build stuff</title>
+</head>
+<body>
+<nav id="TOC" class="toc">
+<header>
+  <h1>On This Page</h1>
+</header>
+<ul>
+<li><a href="#ready-to-build-good.">Ready to build? Good.</a><ul>
+<li><a href="#start-with-content">Start with content</a><ul>
+<li><a href="#super-crazy-basic-content-markdown">Super-crazy Basic Content: Markdown</a></li>
+<li><a href="#a-whirlwind-tour-through-very-basic-markdown">A whirlwind tour through very basic markdown</a><ul>
+<li><a href="#sorry-trick-question-of-a-sort">Sorry, Trick Question of a Sort</a></li>
+<li><a href="#headings">Headings</a></li>
+<li><a href="#links">Links</a><ul>
+<li><a href="#links-the-sequel">Links, The Sequel</a></li>
+</ul></li>
+<li><a href="#more-greatest-hits">More Greatest Hits</a><ul>
+<li><a href="#output-of-pandoc---version">Output of pandoc --version</a></li>
+<li><a href="#its-like-infinite-reflections">It's like infinite reflections</a></li>
+<li><a href="#hey-look-a-bit-of-css">Hey, look, a bit of CSS</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#a-dash-of-magic-transformation-to-html">A dash of magic: Transformation (to HTML)</a></li>
+<li><a href="#fragmenting-the-hell-out-of-it">Fragmenting the Hell out of it</a></li>
+<li><a href="#we-can-do-better-than-this-going-standalone">We can do better than this: Going Standalone</a><ul>
+<li><a href="#but-wait...it-aint-quite-right-upping-to-html5">But wait...it ain't quite right: upping to HTML5</a></li>
+<li><a href="#customizing-the-template">Customizing the template</a></li>
+<li><a href="#um-css-please-a-wonderful-segue-way-to-our-next-topic">Um, CSS please (a wonderful segue way to our next topic)?</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#congratulations">Congratulations</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="ready-to-build-good."><a href="#TOC">Ready to build? Good.</a></h1>
+<h2 id="start-with-content"><a href="#TOC">Start with content</a></h2>
+<h3 id="super-crazy-basic-content-markdown"><a href="#TOC">Super-crazy Basic Content: Markdown</a></h3>
+<p>Inside of the <code>content</code> directory of this repository, you will find <code>index.mdown</code>.</p>
+<p>This is content in its most basic form. I took a mental snapshot of Higgins' white board drawing from Friday and wrote it down, hierarchically, as I see it in my head.</p>
+<p><em>NB: This is for demonstration purposes only and does not imply that I think that this should represent the content of the landing page of our new web site.</em></p>
+<p>For illustrative purposes, I am going to put the contents of the file here, also:</p>
+<pre><code>% Cloud Four: We make the web mobile
+
+# Cloud Four
+
+## We Make the Mobile &lt;-&gt; Web
+
+### [Development](http://www.cloudfour.com/dev &quot;Mobile Web Development&quot;)
+
+We build the mobile &lt;-&gt; web.
+
+### [Training](http://www.cloudfour.com/training &quot;Mobile Web Training and Education&quot;)
+
+Mobilize your team.
+
+### [Consulting](http://www.cloudfour.com/strategy &quot;Mobile Web Consulting and Strategy&quot;)
+
+Strategy for today and tomorrow.
+
+#### Read our Book
+
+We don't just make the mobile web, we also wrote a book about it. Buy [_Head First Mobile Web_](http://bit.ly/hf-mw &quot;Head First Mobile Web&quot;) on Amazon.com.
+
+#### Find Us
+
+Catch up with us in the real world:
+
+* Wed, Jan 18: &quot;Zombie Apocalypse 101&quot;: [Jason](http://www.example.com/jason &quot;Jason Grigsby&quot;) and [Lyza](http://www.example.com/lyza &quot;Lyza Danger Gardner&quot;), WebVisions, NYC
+* Mon, Jan 23: [Mobile Portland](http://www.mobileportland.com &quot;Mobile Portland&quot;) meeting, [Urban Airship](http://www.urbanairship.com &quot;Urban Airship Building&quot;)
+
+[More Gigs...](http://www.cloudfour.com/events &quot;Cloud Four Happenings&quot;)
+</code></pre>
+<p>That's basic markdown. This is about as ugly as it gets: this page has a lot of links (IMHO, markdown's ugliest syntax bit).</p>
+<h3 id="a-whirlwind-tour-through-very-basic-markdown"><a href="#TOC">A whirlwind tour through very basic markdown</a></h3>
+<h4 id="sorry-trick-question-of-a-sort"><a href="#TOC">Sorry, Trick Question of a Sort</a></h4>
+<pre><code>% Cloud Four: We make the web mobile
+</code></pre>
+<p>That first line is actually for <strong>Pandoc</strong>. I'll show you what it does later. It's not my favorite pandoc-y dialect thing, as I think it's a bit ugly. But it is parse-able.</p>
+<h4 id="headings"><a href="#TOC">Headings</a></h4>
+<pre><code># Cloud Four
+</code></pre>
+<p>That's a top-level heading (think <code>&lt;h1&gt;</code> if you must!).</p>
+<pre><code>## We Make the Mobile &lt;-&gt; Web
+
+#### Read our Book
+</code></pre>
+<p>Second and fourth-level headings...get the drift?</p>
+<h4 id="links"><a href="#TOC">Links</a></h4>
+<pre><code>### [Consulting](http://www.cloudfour.com/strategy &quot;Mobile Web Consulting and Strategy&quot;)
+</code></pre>
+<p>A third-level header. Then a link. The link will <em>read</em> <code>Consulting</code> and will link to <code>http://www.cloudfour.com/strategy</code>. Link syntax is, for me, the thing I have trouble remembering the most about markdown syntax. In the most basic of senses:</p>
+<pre><code>[Thing the link says](http://where.it.links.to.com &quot;Title of the link&quot;)
+</code></pre>
+<p>The title will end up in the <code>title</code> attribute of the <code>&lt;a&gt;</code> element once we transform to HTML. But, to be pure, this isn't the <code>title</code> attribute of an <code>&lt;a&gt;</code> element, it's more primal: it's the title of the link. Grin. Yes, I'm being difficult here.</p>
+<p>The title is optional.</p>
+<h5 id="links-the-sequel"><a href="#TOC">Links, The Sequel</a></h5>
+<p>There is another link syntax you can use if you prefer the look of it. Let's edit the <code>index.mdown</code> file.</p>
+<p><strong>Do This</strong>: Convert the links to Jason and Lyza (yes, I realize these are fake links) to reference-style links in <code>index.mdown</code>. Here is the formula:</p>
+<pre><code>[Thing the Link Says][Any keyword or identifier]
+</code></pre>
+<p>For example:</p>
+<pre><code>[Voodoo Doughnuts and their anatomical creations][Voodoo]
+</code></pre>
+<p>Then, later in the document (the bottom is usually a good candidate):</p>
+<pre><code>[Voodoo]:'http://voodoodoughnut.com/'
+</code></pre>
+<p>So, you're creating a sort of footnote to the link itself. This can be easier to parse when you're reading markdown directly. It's a matter of authorial preference.</p>
+<p>Change the links to Jason and Lyza to this variant. After you're don, you can check the solution<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>.</p>
+<h4 id="more-greatest-hits"><a href="#TOC">More Greatest Hits</a></h4>
+<p>To use text or code <em>verbatim</em> inline, use tick marks: `like this` is rendered <code>like this</code>.</p>
+<p>Entire code blocks (trust me, tremendously useful) can be handled in one of two ways:</p>
+<ol type="1">
+<li>Simple: indent the chunk by at least four spaces. Yeah. That's it.</li>
+<li>Use pandoc's built-in syntax highlighting by starting and ending your code block with four (or more) tildes.
+<ol type="a">
+<li><code>~~~~</code>, then a blank line, then your code chunk, then a blank line, then <code>~~~~</code>.</li>
+<li>Even better: open your code chunk with <code>~~~~~{.css}</code> (this example would format as CSS). This will do language-specific highlighing. Curious as to whether pandoc supports your language? Try running <code>pandoc --version</code>. My hunch is that it does.</li>
+<li>p.s. You don't need to put the language extension/name in your closing tildes.</li>
+</ol></li>
+</ol>
+<h6 id="output-of-pandoc---version"><a href="#TOC">Output of pandoc --version</a></h6>
+<pre><code>Compiled with syntax highlighting support for:
+Actionscript, Ada, Alert, Alert_indent, Ansys, Apache, Asn1, Asp, Awk, Bash,
+Bibtex, Boo, C, Changelog, Cisco, Cmake, Coffeescript, Coldfusion, Commonlisp,
+Cpp, Cs, Css, Cue, D, Desktop, Diff, Djangotemplate, Doxygen, Doxygenlua, Dtd,
+Eiffel, Email, Erlang, Fortran, Fsharp, Fstab, Gap, Gdb, Gettext, Gnuassembler,
+Go, Haskell, Haxe, Html, Idl, Ilerpg, Ini, Java, Javadoc, Javascript, Json, Jsp,
+Latex, Lex, LiterateHaskell, Lua, M3u, Makefile, Mandoc, Matlab, Maxima,
+Mediawiki, Metafont, Mips, Modula2, Modula3, Monobasic, Nasm, Noweb, Objectivec,
+Objectivecpp, Ocaml, Octave, Pango, Pascal, Perl, Php, Pike, Postscript, Prolog,
+Python, R, Relaxngcompact, Rhtml, Ruby, Scala, Scheme, Sci, Sed, Sgml, Sql,
+SqlMysql, SqlPostgresql, Tcl, Texinfo, Verilog, Vhdl, Winehq, Wml, Xharbour,
+Xml, Xorg, Xslt, Xul, Yacc, Yaml
+</code></pre>
+<h6 id="its-like-infinite-reflections"><a href="#TOC">It's like infinite reflections</a></h6>
+<p>I am now going to show you the pandoc-extended markdown source for this entire section by indenting it four spaces.</p>
+<pre><code>#### More Greatest Hits
+
+To use text or code *verbatim* inline, use tick marks: \`like this\` is rendered `like this`.
+
+Entire code blocks (trust me, tremendously useful) can be handled in one of two ways:
+
+1. Simple: indent the chunk by at least four spaces. Yeah. That's it.
+2. Use pandoc's built-in syntax highlighting by starting and ending your code block with four (or more) tildes.
+    a. `~~~~`, then a blank line, then your code chunk, then a blank line, then `~~~~`.
+    b. Even better: open your code chunk with `~~~~~{.css}` (this example would format as CSS). This will do language-specific highlighing. Curious as to whether pandoc supports your language? Try running `pandoc --version`. My hunch is that it does.
+    c. p.s. You don't need to put the language extension/name in your closing tildes.
+
+###### Output of pandoc --version ######
+
+    Compiled with syntax highlighting support for:
+    Actionscript, Ada, Alert, Alert_indent, Ansys, Apache, Asn1, Asp, Awk, Bash,
+    Bibtex, Boo, C, Changelog, Cisco, Cmake, Coffeescript, Coldfusion, Commonlisp,
+    Cpp, Cs, Css, Cue, D, Desktop, Diff, Djangotemplate, Doxygen, Doxygenlua, Dtd,
+    Eiffel, Email, Erlang, Fortran, Fsharp, Fstab, Gap, Gdb, Gettext, Gnuassembler,
+    Go, Haskell, Haxe, Html, Idl, Ilerpg, Ini, Java, Javadoc, Javascript, Json, Jsp,
+    Latex, Lex, LiterateHaskell, Lua, M3u, Makefile, Mandoc, Matlab, Maxima,
+    Mediawiki, Metafont, Mips, Modula2, Modula3, Monobasic, Nasm, Noweb, Objectivec,
+    Objectivecpp, Ocaml, Octave, Pango, Pascal, Perl, Php, Pike, Postscript, Prolog,
+    Python, R, Relaxngcompact, Rhtml, Ruby, Scala, Scheme, Sci, Sed, Sgml, Sql,
+    SqlMysql, SqlPostgresql, Tcl, Texinfo, Verilog, Vhdl, Winehq, Wml, Xharbour,
+    Xml, Xorg, Xslt, Xul, Yacc, Yaml
+
+###### It's like infinite reflections ######
+
+I am now going to show you the pandoc-extended markdown source for this entire section by indenting it four spaces.
+</code></pre>
+<p>Note my use of pandoc-extended nested lists. Pandoc lets one use different kind of textual list markers<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>.</p>
+<h6 id="hey-look-a-bit-of-css"><a href="#TOC">Hey, look, a bit of CSS</a></h6>
+<p>Using the <code>~~~~{.css}</code> type of code delineation...</p>
+<pre class="sourceCode"><code class="sourceCode css"><br />    section <span class="kw">{</span> <span class="kw">margin-left:</span> <span class="dt">0.5em</span><span class="kw">;</span> <span class="kw">}</span><br />    a <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">#3666a4</span><span class="kw">;</span> <span class="kw">}</span></code></pre>
+<p>And the source of that:</p>
+<pre><code>~~~~{.css}
+
+    section { margin-left: 0.5em; }
+    a { color: #3666a4; }
+
+~~~~
+</code></pre>
+<p><em>Note: The blank lines make this play better with non-pandoc markdown viewers.</em></p>
+<h3 id="a-dash-of-magic-transformation-to-html"><a href="#TOC">A dash of magic: Transformation (to HTML)</a></h3>
+<p>OK, Smotchkkiss. You've got some markdown. How are you going to make that play Internet? It's a bit of a different tune, I grant you.</p>
+<p>The pseudo-front-page content is kind of chilling on the couch in its birthday suit. Let's put it in web clothing so it can get turned loose in the playground with the other kids without freaking the more uptight mothers out.</p>
+<p>Cue pandoc. We're going to take our <strong>core content</strong> and <strong>transform it</strong> so that it is appropriate for <strong>web browsers.</strong></p>
+<ol type="1">
+<li>Open a Terminal window.</li>
+<li>cd to the <code>content</code> directory of this repo on your computer.</li>
+<li>Run the following command: <code>$ pandoc --from markdown --to html index.mdown &gt; ../index.html</code></li>
+</ol>
+<p>If you <code>cd</code> up one level and run <code>ls</code>, you should see an <code>index.html</code> file.</p>
+<p>Let's look at that command again.</p>
+<pre><code>pandoc --from markdown --to html index.mdown &gt; ../index.html
+</code></pre>
+<p>We're asking <code>pandoc</code> to convert <em>from</em> markdown (the input format) <em>to</em> HTML (the output format). Where's the content we want to transform? In <code>index.mdown</code>. We then direct the output (this is a standard *NIX thing) to the file <code>../index.html</code> by using the redirection operator <code>&gt;</code>.</p>
+<p>(Aside for smarty pants people: You can accomplish the same with <code>pandoc index.mdown &gt; ../index.html</code> as markdown is the default input format and HTML the default output.)</p>
+<h3 id="fragmenting-the-hell-out-of-it"><a href="#TOC">Fragmenting the Hell out of it</a></h3>
+<p>Open that <code>index.html</code> in your favorite text editor (ahem, note, it is one directory higher than the <code>content</code> directory (i.e. the top level directory of the repository)). You should be looking at a chunk of HTML markup. It starts like this:</p>
+<pre class="sourceCode"><code class="sourceCode html"><br />    <span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;cloud-four&quot;</span><span class="kw">&gt;</span>Cloud Four<span class="kw">&lt;/h1&gt;</span><br />    <span class="kw">&lt;h2</span><span class="ot"> id=</span><span class="st">&quot;we-make-the-mobile---web&quot;</span><span class="kw">&gt;</span>We Make the Mobile <span class="dv">&amp;lt;</span>-<span class="dv">&amp;gt;</span> Web<span class="kw">&lt;/h2&gt;</span><br />    <span class="kw">&lt;h3</span><span class="ot"> id=</span><span class="st">&quot;development&quot;</span><span class="kw">&gt;&lt;a</span><span class="ot"> href=</span><span class="st">&quot;http://www.cloudfour.com/dev&quot;</span><span class="ot"> title=</span><span class="st">&quot;Mobile Web Development&quot;</span><span class="kw">&gt;</span>Development<span class="kw">&lt;/a&gt;&lt;/h3&gt;</span><br />    <span class="kw">&lt;p&gt;</span>We build the mobile <span class="dv">&amp;lt;</span>-<span class="dv">&amp;gt;</span> web.<span class="kw">&lt;/p&gt;</span></code></pre>
+<p>...and goes along in that vein for a while. You can see that pandoc creates and applies unique IDs to the various elements and takes care of converting HTML entities for us.</p>
+<p>You can also view this in a web browser. Let me rephrase: <em>view this in a web browser</em>.</p>
+<h3 id="we-can-do-better-than-this-going-standalone"><a href="#TOC">We can do better than this: Going Standalone</a></h3>
+<p>OK, we've made it past the midterm, but now our little project needs to stand on its own. We can't just hurl that index.html out onto the big, bad Internet quite like that. It's HTML, all right, but it's fragmentary. It needs structure or it's likely to get into dope or skateboarding.</p>
+<p>One of pandoc's tools is the ability to create <code>standalone</code> documents, not just fragments.</p>
+<ol type="1">
+<li><code>cd</code> back into the <code>content</code> directory.</li>
+<li>Run this command: <code>$ pandoc -f markdown -t html --standalone index.mdown &gt; ../index.html</code></li>
+</ol>
+<p>As we've all spent a bit of time with pandoc now, I figured it'd be OK to start using the shorter, more familiar, more drop-by-any-time-for-a-drink options <code>-f</code> and <code>-t</code> instead of <code>--from</code> and <code>--to</code>, respectively.</p>
+<p>You'll also note we have asked pandoc to give us <code>standalone</code> HTML.</p>
+<p><em>Now</em> look at the <code>index.html</code> file. <em>Viva la difference!</em> We now have a file that starts like this:</p>
+<pre class="sourceCode"><code class="sourceCode html"><br />    <span class="dt">&lt;!DOCTYPE </span>html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;<span class="dt">&gt;</span><br />    <span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="kw">&gt;</span><br />    <span class="kw">&lt;head&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=utf-8&quot;</span> <span class="kw">/&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;generator&quot;</span><span class="ot"> content=</span><span class="st">&quot;pandoc&quot;</span> <span class="kw">/&gt;</span><br />      <span class="kw">&lt;title&gt;</span>Cloud Four: We make the web mobile<span class="kw">&lt;/title&gt;</span><br />    <span class="kw">&lt;/head&gt;</span><br />    <span class="kw">&lt;body&gt;</span></code></pre>
+<p>...and continues on as such.</p>
+<h4 id="but-wait...it-aint-quite-right-upping-to-html5"><a href="#TOC">But wait...it ain't quite right: upping to HTML5</a></h4>
+<p>You probably already noticed that the <code>doctype</code> for the file is XHTML-transitional. Uhho. We want HTML5! It's so much cooler. Let's one-up our pandoc awesome by doing <em>two</em> more cool things now:</p>
+<ol type="1">
+<li><code>cd</code> to the <code>content</code> directory (getting a bit old hat, isn't it?)</li>
+<li>Run: <code>pandoc -f markdown -t html --standalone --html5 --section-divs index.mdown &gt; ../index.html</code></li>
+</ol>
+<p>Let's read this together:</p>
+<ul>
+<li>Tell pandoc to</li>
+<li>Convert from markdown to HTML</li>
+<li>Make it a standalone file, not a fragment</li>
+<li>Use HTML5</li>
+<li>Wrap the outline sections of the document—generally delineated by headings—with HTML5 <code>&lt;section&gt;</code> elements</li>
+<li>Use the file <code>index.mdown</code> as input</li>
+<li>Output to <code>../index.html</code></li>
+</ul>
+<p>If you look at the updated <code>index.html</code> file, you'll see it does appear to be bona-fide HTML5:</p>
+<pre class="sourceCode"><code class="sourceCode html"><br />    <span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span><br />    <span class="kw">&lt;html&gt;</span><br />    <span class="kw">&lt;head&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span> <span class="kw">/&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;generator&quot;</span><span class="ot"> content=</span><span class="st">&quot;pandoc&quot;</span> <span class="kw">/&gt;</span><br />      <span class="kw">&lt;title&gt;</span>Cloud Four: We make the web mobile<span class="kw">&lt;/title&gt;</span><br />      <span class="co">&lt;!--[if lt IE 9]&gt;</span><br /><span class="co">        &lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</span><br /><span class="co">      &lt;![endif]--&gt;</span><br />    <span class="kw">&lt;/head&gt;</span><br />    <span class="kw">&lt;body&gt;</span><br />    <span class="kw">&lt;header&gt;</span><br />    <span class="kw">&lt;h1</span><span class="ot"> class=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>Cloud Four: We make the web mobile<span class="kw">&lt;/h1&gt;</span></code></pre>
+<p><em>But wait...it's ugly. I need style! I need my own template! WTF is html5.js? Where'd that come from?</em> <strong>I am feeling very out of control!!!!</strong></p>
+<h4 id="customizing-the-template"><a href="#TOC">Customizing the template</a></h4>
+<p>Now <strong>do this</strong>:</p>
+<ol type="1">
+<li><code>cd</code> to the <code>templates</code> directory. Ignore the existing <code>tutorial-page.html</code> file (that's what I used as the template for this, what you are reading, right now!). Create your own file called <code>page.html</code>.</li>
+<li>Put this in the file and save it:</li>
+</ol>
+<pre class="sourceCode"><code class="sourceCode html"><br />    <span class="er">&lt;</span>!doctype html&gt;<br />    <span class="kw">&lt;head&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;X-UA-Compatible&quot;</span><span class="ot"> content=</span><span class="st">&quot;IE=edge,chrome=1&quot;</span><span class="kw">&gt;</span><br />      <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width,initial-scale=1&quot;</span><span class="kw">&gt;</span><br />      <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="kw">&gt;</span><br />      <span class="kw">&lt;title&gt;</span>$if(title-prefix)$$title-prefix$ - $endif$$if(pagetitle)$$pagetitle$$endif$<span class="kw">&lt;/title&gt;</span><br />    <span class="kw">&lt;/head&gt;</span><br />    <span class="kw">&lt;body&gt;</span><br />      $body$<br />    <span class="kw">&lt;/body&gt;</span><br />    <span class="kw">&lt;/html&gt;</span></code></pre>
+<p>I'm going to tell you a hint that <strong>pandoc variables look like <code>$this$</code>.</strong> The <code>$body$</code> variable gets populated with the entirety of our document if we use it in a template and indicate that we want pandoc to use this template.</p>
+<p>Try to ignore how ugly the <code>&lt;title&gt;</code> stuff looks for now.</p>
+<p>OK, let's take this thing for a test flight:</p>
+<ol type="1">
+<li><code>cd</code> to the <code>content</code> directory again.</li>
+<li>Run the command: <code>pandoc --from markdown --to html --standalone --html5 --section-divs --template=../templates/page.html index.mdown &gt; ../index.html</code></li>
+</ol>
+<p>Look at <em>that</em> in a browser and a text editor.</p>
+<h4 id="um-css-please-a-wonderful-segue-way-to-our-next-topic"><a href="#TOC">Um, CSS please (a wonderful segue way to our next topic)?</a></h4>
+<p>Oh, dear, our <code>&lt;head&gt;</code> is looking a bit bare. Perhaps it needs a hat. No, actually, it needs CSS:</p>
+<pre><code>&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;&quot;&gt;
+  &lt;title&gt;Cloud Four: We make the web mobile&lt;/title&gt;
+&lt;/head&gt;
+</code></pre>
+<p>We have neglected to tell pandoc what CSS we wish to use. How interesting, as I wanted to tell you all about <strong>SASS and SCSS</strong>.</p>
+<h2 id="congratulations"><a href="#TOC">Congratulations</a></h2>
+<p>You have now built markdown and transformed it to real HTML5 in a standalone document. Now it's time to <a href="style-content.html">add some style</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Solution to link syntax conversion:</p>
+<p><code>* Wed, Jan 18: &quot;Zombie Apocalypse 101&quot;: [Jason][jason]) and [Lyza][lyza], WebVisions, NYC</code></p>
+<p>and at the bottom of the file:</p>
+<p><code>[Jason]:http://www.example.com/jason</code><br /><code>[Lyza]:http://www.example.com/lyza</code></p>
+<p>It's OK, of course, if you came up with different identifiers or used a slightly different title value (or none at all, if you're like that). <a href="#fnref1" class="footnoteBackLink">↩</a></p></li>
+<li id="fn2"><p><a href="http://johnmacfarlane.net/pandoc/README.html#lists">More on pandoc-extended lists</a> <a href="#fnref2" class="footnoteBackLink">↩</a></p></li>
+</ol>
+</div>
+</nav>
+</body>
+</html>

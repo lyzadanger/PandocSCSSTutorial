@@ -1,0 +1,154 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style type="text/css">
+    /*<![CDATA[*/
+      table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre 
+         { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+      td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; }
+      td.sourceCode { padding-left: 5px; }
+      code.sourceCode span.kw { color: #007020; font-weight: bold; } 
+      code.sourceCode span.dt { color: #902000; }
+      code.sourceCode span.dv { color: #40a070; }
+      code.sourceCode span.bn { color: #40a070; }
+      code.sourceCode span.fl { color: #40a070; }
+      code.sourceCode span.ch { color: #4070a0; }
+      code.sourceCode span.st { color: #4070a0; }
+      code.sourceCode span.co { color: #60a0b0; font-style: italic; }
+      code.sourceCode span.ot { color: #007020; }
+      code.sourceCode span.al { color: red; font-weight: bold; }
+      code.sourceCode span.fu { color: #06287e; }
+      code.sourceCode span.re { }
+      code.sourceCode span.er { color: red; font-weight: bold; }
+    /*]]>*/
+  </style>
+  <link rel="stylesheet" href="../styles/tutorial.css">
+  <title>From here to Cloudfour.com: Let's build stuff</title>
+</head>
+<body>
+<nav id="TOC" class="toc">
+<header>
+  <h1>On This Page</h1>
+</header>
+<ul>
+<li><a href="#ready-to-style-good.">Ready to style? Good.</a><ul>
+<li><a href="#hi-from-scss">Hi From SCSS</a></li>
+<li><a href="#create-your-first-.scss-file">Create your first .scss file</a></li>
+<li><a href="#variables">Variables</a><ul>
+<li><a href="#putting-the-variables-to-work">Putting the variables to work</a></li>
+<li><a href="#how-the-sausage-is-made">How the sausage is made</a></li>
+<li><a href="#add-a-nested-rule">Add a nested rule</a><ul>
+<li><a href="#and-now-for-my-next-trick-more-with-nesting">And now, for my next trick (more with nesting)</a></li>
+</ul></li>
+<li><a href="#other-damned-cool-stuff">Other damned cool stuff</a></li>
+</ul></li>
+<li><a href="#but-wait-i-need-to-see-this-in-action">But Wait, I need to see this in action</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="ready-to-style-good."><a href="#TOC">Ready to style? Good.</a></h1>
+<h2 id="hi-from-scss"><a href="#TOC">Hi From SCSS</a></h2>
+<p>In this section, we'll be paying homage to <a href="http://sass-lang.com/">SCSS</a>. I'll let their web site speak for itself:</p>
+<blockquote>
+<p>Sass makes CSS fun again. Sass is an extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more. It’s &gt;translated to well-formatted, standard CSS using the command line tool or a web-framework plugin.</p>
+</blockquote>
+<blockquote>
+<p>Sass has two syntaxes. The new main syntax (as of Sass 3) is known as “SCSS” (for “Sassy CSS”), and is a superset of CSS3’s syntax. &gt;This means that every valid CSS3 stylesheet is valid SCSS as well. SCSS files use the extension .scss.</p>
+</blockquote>
+<p>(In the interest of continuing your markdown education, <code>blockquote</code> or <code>aside</code>-like content looks like quoted emails, that is, each line begins with a <code>&gt;</code>. That last code chunk looks like:</p>
+<pre><code>&gt;Sass makes CSS fun again. Sass is an extension of CSS3, adding nested rules, variables, mixins, selector inheritance, and more. It’s
+&gt;translated to well-formatted, standard CSS using the command line tool or a web-framework plugin.
+
+&gt;Sass has two syntaxes. The new main syntax (as of Sass 3) is known as “SCSS” (for “Sassy CSS”), and is a superset of CSS3’s syntax. 
+&gt;This means that every valid CSS3 stylesheet is valid SCSS as well. SCSS files use the extension .scss.
+</code></pre>
+<p>) (You didn't think I'd forget to close that parenthesis, did you?)</p>
+<h2 id="create-your-first-.scss-file"><a href="#TOC">Create your first .scss file</a></h2>
+<ol type="1">
+<li><code>cd</code> to the <code>styles</code> directory.</li>
+<li>Ignore the extant <code>tutorial</code> files. I bet you can guess why I created them.</li>
+<li>Create a <em>new</em> file called <code>styles.scss</code>. <em>Note</em> that extension. It's not necessary to name your SCSS files anything in particular, but using that extension keeps them separate from the CSS we'll use in our HTML page.</li>
+</ol>
+<h2 id="variables"><a href="#TOC">Variables</a></h2>
+<p>I want you to put the following at the top of the file:</p>
+<pre><code>$cloudfour_blue: #709ad0;
+</code></pre>
+<p>That's a variable. You define it once (it does <em>not</em> have to be at the top of the file, FWIW, but it's nice, stylistically).</p>
+<p><strong>Exercise:</strong> Now I want you to go to our current (old) site and find hex values for two more colors: the green and the brown. I don't really care if they're spot on. Create two new variables called <code>$accent_brown</code> and <code>$accent_green</code>.</p>
+<p><strong>Extra credit:</strong> Can you think of why those are terrible variable names?</p>
+<p>You can see the values I used.<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup></p>
+<h3 id="putting-the-variables-to-work"><a href="#TOC">Putting the variables to work</a></h3>
+<p>They're lonely. They've been created, but have nowhere to show their mettle.</p>
+<p>Try adding this to the file:</p>
+<pre class="sourceCode"><code class="sourceCode css"><br />    body <span class="kw">{</span><br />      <span class="kw">background-color:</span> darken($cloudfour_blue, <span class="dt">50%</span>)<span class="kw">;</span><br />      <span class="kw">font-family:</span> helvetica<span class="kw">;</span><br />      <span class="kw">color:</span> lighten($cloudfour_blue, <span class="dt">38%</span>)<span class="kw">;</span><br />    <span class="kw">}</span><br />    h1, h2, h3, h4 <span class="kw">{</span><br />      <span class="kw">color:</span> $cloudfour_blue<span class="kw">;</span><br />    <span class="kw">}</span></code></pre>
+<p>(Everyone loves Helvetica!)</p>
+<p>Lookit that! We're able to <em>lighten</em> and <em>darken</em> colors proportionally! And they're variables, to boot!</p>
+<p>Instead of having to define ugly hex (or whatever) all over our CSS, we can define variables once and reuse! You know, like <em>an actual language</em>!</p>
+<h3 id="how-the-sausage-is-made"><a href="#TOC">How the sausage is made</a></h3>
+<p>Wait, this isn't CSS! You can't use it in a page! OK, there, Sparky. Calm down.</p>
+<ol type="1">
+<li><code>cd</code> into the <code>styles</code> directory, if you're not there already.</li>
+<li>Run this command: <code>sass styles.scss styles.css</code></li>
+</ol>
+<p><strong>OMGPEE! Out comes CSS!!!!</strong></p>
+<h3 id="add-a-nested-rule"><a href="#TOC">Add a nested rule</a></h3>
+<p>It's about to get more real. Add this to the file.</p>
+<p><em>NB: Don't edit <code>styles.css</code>. Edit <code>styles.scss</code>. Or else there be frustration.</em></p>
+<pre><code><br />    #we-make-the-mobile---web {
+      p {
+        margin: 0.5em;
+      }
+      h3 {
+        color: $accent_green;
+        a {
+          text-decoration: none;
+          color: darken($cloudfour_blue, 25%);
+        }
+      }
+    }
+</code></pre>
+<p>OK. Put your typing fingers down for a minute and peruse that chunk there. What the hell do you think is going on?</p>
+<p><code>#we-make-the-mobile---web</code> is an ID autogenerated by pandoc. It's currently assigned to the <code>&lt;section&gt;</code> element that contains the three sub-sections about what we do.</p>
+<p>In my pretend world, I've decided that:</p>
+<ul>
+<li>Underlined links aren't working for me--but only inside of the section with the three things we do.</li>
+<li>I want the <code>&lt;h3&gt;</code> elements in that section to be green.</li>
+<li>I want to indent the paragraphs in that section by 0.5em.</li>
+</ul>
+<p>In regular, workaday CSS, I'd have to create these selectors:</p>
+<pre class="sourceCode"><code class="sourceCode css"><br /><span class="fl">#we-make-the-mobile---web</span> p <span class="kw">{</span><br />  <span class="kw">margin:</span> <span class="dt">0.5em</span><span class="kw">;</span> <span class="kw">}</span><br /><span class="fl">#we-make-the-mobile---web</span> h3 <span class="kw">{</span><br />  <span class="kw">color:</span> <span class="dt">#c4d82d</span><span class="kw">;</span> <span class="kw">}</span><br /><span class="fl">#we-make-the-mobile---web</span> h3 a <span class="kw">{</span><br />  <span class="kw">text-decoration:</span> <span class="dt">none</span><span class="kw">;</span><br />  <span class="kw">color:</span> <span class="dt">#305a91</span><span class="kw">;</span> <span class="kw">}</span></code></pre>
+<p>But why do that, when I can make it so much more readable, so much more manageable, using <em>nesting</em> in SCSS?</p>
+<p>By the way, if you run the same command now (after saving the file) <code>sass styles.scss styles.css</code>, the chunk above is what SASS will create for you! Try it!</p>
+<h4 id="and-now-for-my-next-trick-more-with-nesting"><a href="#TOC">And now, for my next trick (more with nesting)</a></h4>
+<p>Hey, what if, for some reason, e.g. I am insane, I want the background color of the body to be light brown for folks who have a current window width of less than 600 pixels. I know, we totally get that request all the time.</p>
+<p><strong>Super Challenge</strong>: Can you add a media query such that the background color of the body element is light brown (think the accent brown, lightened by about 30%)?</p>
+<p>Then go look at the answer.<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup></p>
+<p>See, you can nest <em>media queries</em>, too. How freaking awesome is that! Execute on these changes, run <code>sass</code> again on your stylesheet.</p>
+<h3 id="other-damned-cool-stuff"><a href="#TOC">Other damned cool stuff</a></h3>
+<p><strong>Exercise:</strong> Go to <a href="http://sass-lang.com/">SCSS' and SASS' home page</a> and scroll down to the bottom. Read the sections on <em>mixins</em> and <em>selector inheritance</em>. No need for me to re-write that concise content!</p>
+<h2 id="but-wait-i-need-to-see-this-in-action"><a href="#TOC">But Wait, I need to see this in action</a></h2>
+<p>How are you <em>ever</em> going to prove that the background is antique poop-colored (sort of a vintage, faux turd shade) if you can't get that CSS to be used by our pandoc-generated HTML document?!</p>
+<p>Oh, but you can, of course. Let's go <a href="put-together.html">put it all together</a>.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>My values for these two SCSS variables:</p>
+<p><code>$accent_green: #c4d82d;</code><br /><code>$accent_brown: #78562f;</code> <a href="#fnref1" class="footnoteBackLink">↩</a></p></li>
+<li id="fn2"><p>Your body rules should look something like:</p>
+<pre><code><br />body {
+  color: darken($cloudfour_blue, 50%);
+  font-family: helvetica;
+  background-color: lighten($cloudfour_blue, 35%);
+  @media screen and (max-width: 600px){
+      background-color: lighten($accent_brown, 30%);
+  }
+}
+</code></pre>
+ <a href="#fnref2" class="footnoteBackLink">↩</a></li>
+</ol>
+</div>
+</nav>
+</body>
+</html>
